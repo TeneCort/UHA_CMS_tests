@@ -1,0 +1,21 @@
+<?php include VIEW . 'header.phtml';
+
+	$action = $this->getAction();
+	
+?>
+
+<h1><?php echo $action?></h1>
+
+<fieldset>
+	<legend>My Article</legend>
+		<form action="/article" method="POST">
+		Title:<br>
+		<input type="text" name="title"><br>
+		Text:<br>
+		<input type="text" name="text">
+		<input type="submit" name = "create" value="Create Article">
+	</form> 
+</fieldset>
+
+
+<?php include VIEW . 'footer.phtml';?>

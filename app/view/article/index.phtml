@@ -1,0 +1,25 @@
+<?php include VIEW . 'header.phtml';
+
+	$action = $this->getAction();
+	$articles = $this->getArticles();
+
+?>
+
+<h1><?php echo $action ?></h1>
+
+<ul>
+	<?php
+	foreach ($articles as $article => $value) {
+		echo('<form action="/article/readArticle/' . $value['id'] . '" method="POST">
+				<li>'
+					. $value['title'] . ' - '. $value['textContent'] . '</a>
+					<input type="hidden" name = "articleID" value="' . $value['id'] . '">
+					<input type="submit" name = "submit" value="Read Article">
+				</li>
+			</form>');
+		
+	}
+	?>	
+</ul>
+
+<?php include VIEW . 'footer.phtml';?>
