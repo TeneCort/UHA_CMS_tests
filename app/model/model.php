@@ -79,10 +79,12 @@ class Model {
         echo "Article deleted successfully"; 
     }
 
-    public function modifyArticle($articleID){
+    public function updateArticle($articleID, $articleTitle, $textContent){
 
-        $req = "DELETE  FROM `article` WHERE `id` = '$articleID'";
+        $req = "UPDATE `article` 
+        SET `title` = '$articleTitle', `textContent` = '$textContent'
+        WHERE `id` = '$articleID'";
         $this::$conn->exec($req);         
-        echo "Article deleted successfully"; 
+        echo "Article updated successfully"; 
     }
 }

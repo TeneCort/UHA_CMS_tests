@@ -8,8 +8,6 @@ define('DATA', ROOT . 'app' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR
 define('CORE', ROOT . 'app' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR);
 define('CONTROLLER', ROOT . 'app' . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR);
 
-/*highlight_string("<?php\n\$data =\n" . var_export(ROOT, true) . ";\n?>");*/
-
 $modules = [ROOT,APP,CORE,CONTROLLER,DATA];
 
 /*highlight_string("<?php\n\$data =\n" . var_export($modules, true) . ";\n?>");*/

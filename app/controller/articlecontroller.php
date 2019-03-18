@@ -10,6 +10,9 @@ class articleController extends Controller{
 		if (isset($_POST['delete'])) {
 			$this->model->eraseArticle($_POST['id']);
 		}
+		if (isset($_POST['update'])) {
+			$this->model->updateArticle($_POST['id']);
+		}
 		
 		$this->view('article' . DIRECTORY_SEPARATOR . 'index', [
 			'id'       => $id,
@@ -44,6 +47,22 @@ class articleController extends Controller{
 		] );
 
 		$this->view->render();
+	}
+
+	public function modifyArticle($id = "", $name = ""){
+
+		$this->model('article');
+
+		$this->view('article' . DIRECTORY_SEPARATOR . 'modifyarticle', [
+			'id'          => $this->model->getID($_POST['articleID']),
+			'name'        => $name,
+			'title'       => $this->model->getTitle($_POST['articleID']),
+			'textContent' => $this->model->getTextContent($_POST['articleID'])
+		] );
+
+		var_dump($_POST['articleID']);
+
+		$this->view->render($_POST['articleID']);
 	}
 }
 
