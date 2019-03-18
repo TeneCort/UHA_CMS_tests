@@ -2,7 +2,7 @@
 
 class Application {	
 
-	protected $controller = 'homeController';
+	protected $controller = 'homecontroller';
 	protected $action = 'index';
 	protected $param = [];
 
@@ -18,21 +18,18 @@ class Application {
 
 				 call_user_func_array([$this->controller, $this->action], $this->param);
 			}
-		}else echo 'THERE IS A PROBLEM MATE!';
+		}else echo 'THERE IS A PROBLEM MATE! Application';
 	}
 
 	protected function prepareURL() {
 
 		$request = trim($_SERVER['REQUEST_URI'], '/');
-
 		if (!empty($request)) {
-
 			$url = explode('/', $request);
-			$this->controller = isset($url[0]) ? $url[0].'Controller' : 'homeController';
+			$this->controller = isset($url[0]) ? $url[0].'controller' : 'homecontroller';
 			$this->action = isset($url[1]) ? $url[1] : 'index'; 	
 			unset($url[0], $url[1]);
-			$this->param = !empty($url) ? array_values($url) : [];
-			
+			$this->param = !empty($url) ? array_values($url) : [];			
 		}
 	}
 }

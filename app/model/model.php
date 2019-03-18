@@ -78,4 +78,11 @@ class Model {
         $this::$conn->exec($req);         
         echo "Article deleted successfully"; 
     }
+
+    public function modifyArticle($articleID){
+
+        $req = "DELETE  FROM `article` WHERE `id` = '$articleID'";
+        $this::$conn->exec($req);         
+        echo "Article deleted successfully"; 
+    }
 }

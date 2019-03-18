@@ -24,7 +24,7 @@ class articleController extends Controller{
 
 		$this->model('article');
 		
-		$this->view('article' . DIRECTORY_SEPARATOR . 'newArticle', [
+		$this->view('article' . DIRECTORY_SEPARATOR . 'newarticle', [
 			'id'   => $id,
 			'name' => $name
 		] );
@@ -36,7 +36,7 @@ class articleController extends Controller{
 
 		$this->model('article');
 
-		$this->view('article' . DIRECTORY_SEPARATOR . 'readArticle', [
+		$this->view('article' . DIRECTORY_SEPARATOR . 'readarticle', [
 			'id'          => $this->model->getID($_POST['articleID']),
 			'name'        => $name,
 			'title'       => $this->model->getTitle($_POST['articleID']),

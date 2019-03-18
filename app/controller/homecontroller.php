@@ -1,6 +1,10 @@
 <?php
 
+include CORE . DIRECTORY_SEPARATOR . 'Application.php';
+
 class homeController extends Controller{
+
+
 	
 	public function index($id = "", $name = ""){
 		
