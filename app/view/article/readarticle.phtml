@@ -12,13 +12,13 @@
 <p><?php echo $article['textContent'] ?></p>
 
 <form action="/article" method="POST">
-	<input type="hidden" name="id" value = "<?php echo $article['id'] ?>">
-	<input type="submit" name = "delete" value="Delete Article">
+	<input type="hidden" name="id" value="<?php echo $article['id'] ?>">
+	<input type="submit" name="delete" value="Delete Article">
 </form>
 
 <form action="/article/modifyarticle" method="POST">
-	<input type="hidden" name="id" value = "<?php echo $article['id'] ?>">
-	<input type="submit" name = "update" value="Edit Article">
+	<input type="hidden" name="id" value="<?php echo $article['id'] ?>">
+	<input type="submit" name="update" value="Edit Article">
 </form>
 
 

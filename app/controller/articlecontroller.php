@@ -11,7 +11,7 @@ class articleController extends Controller{
 			$this->model->eraseArticle($_POST['id']);
 		}
 		if (isset($_POST['update'])) {
-			$this->model->updateArticle($_POST['id']);
+			$this->model->updateArticle($_POST['id'], $_POST['title'], $_POST['text'] );
 		}
 		
 		$this->view('article' . DIRECTORY_SEPARATOR . 'index', [
@@ -54,15 +54,13 @@ class articleController extends Controller{
 		$this->model('article');
 
 		$this->view('article' . DIRECTORY_SEPARATOR . 'modifyarticle', [
-			'id'          => $this->model->getID($_POST['articleID']),
+			'id'          => $this->model->getID($_POST['id']),
 			'name'        => $name,
-			'title'       => $this->model->getTitle($_POST['articleID']),
-			'textContent' => $this->model->getTextContent($_POST['articleID'])
+			'title'       => $this->model->getTitle($_POST['id']),
+			'textContent' => $this->model->getTextContent($_POST['id'])
 		] );
 
-		var_dump($_POST['articleID']);
-
-		$this->view->render($_POST['articleID']);
+		$this->view->render();
 	}
 }
 

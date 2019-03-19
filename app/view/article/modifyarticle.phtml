@@ -7,25 +7,25 @@
 
 <h1><?php echo $action ?></h1>
 
-<h2><?php echo $article['title'] ?></h2>
-
-<p><?php echo $article['textContent'] ?></p>
-
 <fieldset>
 	<legend>My Article</legend>
 		<form action="/article" method="POST">
 		Title:<br>
 		<input type="text" name="title" value="<?php echo $article['title'] ?>"><br>
 		Text:<br>
-		<input type="text" name="text" value="<?php echo $article['textContent'] ?>">
-		<input type="submit" name = "create" value="Create Article">
+		<textarea name="text" id="editor">
+			<?php echo $article['textContent'] ?>
+		</textarea>
+		<!--<input type="text" name="text" value="<?php echo $article['textContent'] ?>">-->
+		<input type="hidden" name="id" value="<?php echo $article['id'] ?>">
+		<input type="submit" name="update" value="Modify Article">
 	</form> 
 </fieldset>
-
-<form action="/article" method="POST">
-	<input type="hidden" name="id" value = "<?php echo $article['id'] ?>">
-	<input type="submit" name = "update" value="Edit Article">
-</form>
-
-
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 <?php include VIEW . 'footer.phtml';?>

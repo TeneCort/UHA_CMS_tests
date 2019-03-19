@@ -12,10 +12,17 @@
 		Title:<br>
 		<input type="text" name="title"><br>
 		Text:<br>
-		<input type="text" name="text">
+		<!--<input type="text" name="text">-->
+		<textarea name="text" id="editor"></textarea>
 		<input type="submit" name = "create" value="Create Article">
 	</form> 
 </fieldset>
-
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
 <?php include VIEW . 'footer.phtml';?>
