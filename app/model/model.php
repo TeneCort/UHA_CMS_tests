@@ -1,7 +1,7 @@
 <?php
 class Model {
 
-    static $user, $pass, $name, $conn;
+    static protected $user, $pass, $name, $conn;
     protected $article, $articles;
 
     public function __construct() {

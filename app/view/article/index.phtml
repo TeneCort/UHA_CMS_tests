@@ -7,19 +7,17 @@
 
 <h1><?php echo $action ?></h1>
 
-<ul>
-	<?php
-	foreach ($articles as $article => $value) {
-		echo('<form action="/article/readArticle/' . $value['id'] . '" method="POST">
-				<li>'
-					. $value['title'] . ' - '. $value['textContent'] . '</a>
-					<input type="hidden" name = "articleID" value="' . $value['id'] . '">
-					<input type="submit" name = "submit" value="Read Article">
-				</li>
-			</form>');
-		
-	}
-	?>	
-</ul>
+
+<?php
+foreach ($articles as $article => $value) {
+	echo('<form action="/article/readArticle/' . $value['id'] . '" method="POST">'
+			. $value['title'] . $value['textContent'] . '</a>
+			<input type="hidden" name = "articleID" value="' . $value['id'] . '">
+			<input type="submit" name = "submit" value="Read Article">
+		</form>');
+	
+}
+?>	
+
 
 <?php include VIEW . 'footer.phtml';?>
