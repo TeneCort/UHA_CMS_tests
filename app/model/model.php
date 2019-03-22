@@ -53,15 +53,21 @@ class Model {
 
         while ($row = $res->fetch(PDO::FETCH_OBJ)) { 
 
+            $this->articleu = new Articlee(); 
+            $this->articleu->setID($row->id);
+            $this->articleu->setTitle($row->title);  
+            $this->articleu->setTextContent($row->textContent);  
+            //var_dump($this->articleu);
+
             $article = [
                 "id"          => $row->id,
                 "title"       => $row->title,
                 "textContent" => $row->textContent
             ];
 
-            array_push($articles, $article);
+            array_push($articles, $this->articleu);
         }
-
+        //var_dump($articles);
         return $articles;
     }
 

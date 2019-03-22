@@ -8,11 +8,13 @@
 <h1><?php echo $action ?></h1>
 
 
-<?php
+<?php //ar_dump($articles);
+
 foreach ($articles as $article => $value) {
-	echo('<form action="/article/readArticle/' . $value['id'] . '" method="POST">'
-			. $value['title'] . $value['textContent'] . '</a>
-			<input type="hidden" name = "articleID" value="' . $value['id'] . '">
+
+	echo('<form action="/article/readArticle/' . $value->getID() . '" method="POST">'
+			. $value->getTitle() . $value->getTextContent() . '</a>
+			<input type="hidden" name = "articleID" value="' . $value->getID() . '">
 			<input type="submit" name = "submit" value="Read Article">
 		</form>');
 	

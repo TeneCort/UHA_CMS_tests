@@ -1,4 +1,7 @@
 <?php
+
+include OBJECTS . 'article.php';
+
 class article extends Model{
     
     protected $articleID = '';
@@ -7,10 +10,12 @@ class article extends Model{
     protected $articleDate = '';
     protected $articleTime = '';
     protected $articlePublisher = '';
+    
+    protected $articleu;
 
     public function __construct(){
         parent:: __construct();
-
+                
     }
 
     public function getArticle($aID){

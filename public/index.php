@@ -7,8 +7,9 @@ define('MODEL', ROOT . 'app' . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARAT
 define('DATA', ROOT . 'app' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR);
 define('CORE', ROOT . 'app' . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR);
 define('CONTROLLER', ROOT . 'app' . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR);
+define('OBJECTS', ROOT . 'app' . DIRECTORY_SEPARATOR . 'objects' . DIRECTORY_SEPARATOR);
 
-$modules = [ROOT,APP,CORE,CONTROLLER,DATA];
+$modules = [ROOT,APP,CORE,CONTROLLER,DATA,OBJECTS];
 
 /*highlight_string("<?php\n\$data =\n" . var_export($modules, true) . ";\n?>");*/
 
