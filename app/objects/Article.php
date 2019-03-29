@@ -1,13 +1,14 @@
 <?php  
 
-class Articlee{
+class Article{
 
 	protected $articleID = '';
     protected $articleTitle = '';
     protected $articleTextContent = '';
-    protected $articleDate = '';
+    /*protected $articleDate = '';
     protected $articleTime = '';
     protected $articlePublisher = '';
+    protected $category;*/
     
     public function __construct(){
 
@@ -17,6 +18,10 @@ class Articlee{
     	return $this->articleID;
     }
 
+    /**
+     * Not really needed since the ID is set through the sql request
+     */
+
     public function setID($id){
     	$this->articleID = $id;
     }
@@ -25,17 +30,21 @@ class Articlee{
     	return $this->articleTitle;
     }
 
-    public function setTitle($title){
-    	$this->articleTitle = $title;
+    public function setTitle($newTitle){
+    	$this->articleTitle = $newTitle;
     }
 
     public function getTextContent(){
     	return $this->articleTextContent;
     }
 
-    public function setTextContent($textContent){
-    	$this->articleTextContent = $textContent;
+    public function setTextContent($newTextContent){
+    	$this->articleTextContent = $newTextContent;
     }
+
+    /**
+     *  Must add the rest of setters & getters
+     */
 }
 
 ?>

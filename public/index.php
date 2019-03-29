@@ -11,6 +11,10 @@ define('OBJECTS', ROOT . 'app' . DIRECTORY_SEPARATOR . 'objects' . DIRECTORY_SEP
 
 $modules = [ROOT,APP,CORE,CONTROLLER,DATA,OBJECTS];
 
+foreach (glob(OBJECTS . "*.php") as $filename) {
+	require $filename;
+}
+
 /*highlight_string("<?php\n\$data =\n" . var_export($modules, true) . ";\n?>");*/
 
 set_include_path(ROOT . PATH_SEPARATOR . implode(PATH_SEPARATOR, $modules));

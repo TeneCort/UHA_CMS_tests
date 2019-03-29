@@ -1,0 +1,25 @@
+<?php include VIEW . 'header.phtml';
+
+	$action  = $this->getAction();
+	$article = $this->getArticle();
+
+?>
+
+<h1><?php echo $action ?></h1>
+
+<h2><?php echo $article->getTitle() ?></h2>
+
+<p><?php echo $article->getTextContent() ?></p>
+
+<form action="/administration" method="POST">
+	<input type="hidden" name="id" value="<?php echo $article->getID() ?>">
+	<input type="submit" name="delete" value="Delete Article">
+</form>
+
+<form action="/administration/modifyarticle" method="POST">
+	<input type="hidden" name="id" value="<?php echo $article->getID() ?>">
+	<input type="submit" name="update" value="Edit Article">
+</form>
+
+
+<?php include VIEW . 'footer.phtml';?>

@@ -5,9 +5,14 @@ class Application {
 	protected $controller = 'homecontroller';
 	protected $action = 'index';
 	protected $param = [];
+	protected $webPage;
 
 	public function __construct() {
 
+		$webPage = new webPage('hello', 'world');
+
+		echo $webPage->getName();
+		
 		$this->prepareURL();	
 
 		if (file_exists(CONTROLLER . $this->controller . '.php')) {

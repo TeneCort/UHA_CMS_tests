@@ -1,7 +1,22 @@
-<?php include VIEW . 'header.phtml';?>
-<?php
+<?php include VIEW . 'header.phtml';
+
 	$action = $this->getAction();
+	$articles = $this->getArticles();
+	
 ?>
 <h1><?php echo $action ?></h1>
+
+<?php
+
+foreach ($articles as $article => $value) {
+
+	echo('<form action="/administration/readArticle/' . $value->getID() . '" method="POST">'
+			. $value->getTitle() . $value->getTextContent() . '</a>
+			<input type="hidden" name = "articleID" value="' . $value->getID() . '">
+			<input type="submit" name = "submit" value="Read Article">
+		</form>');
+	
+}
+?>	
 
 <?php include VIEW . 'footer.phtml';?>

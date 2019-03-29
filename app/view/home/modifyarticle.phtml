@@ -1,6 +1,6 @@
 <?php include VIEW . 'header.phtml';
 
-	$action = $this->getAction();
+	$action  = $this->getAction();
 	$article = $this->getArticle();
 
 ?>
@@ -9,15 +9,14 @@
 
 <fieldset>
 	<legend>My Article</legend>
-		<form action="/article" method="POST">
+		<form action="/administration" method="POST">
 		Title:<br>
-		<input type="text" name="title" value="<?php echo $article['title'] ?>"><br>
+		<input type="text" name="title" value="<?php echo $article->getTitle() ?>"><br>
 		Text:<br>
 		<textarea name="text" id="editor">
-			<?php echo $article['textContent'] ?>
+			<?php echo $article->getTextContent() ?>
 		</textarea>
-		<!--<input type="text" name="text" value="<?php echo $article['textContent'] ?>">-->
-		<input type="hidden" name="id" value="<?php echo $article['id'] ?>">
+		<input type="hidden" name="id" value="<?php echo $article->getID() ?>">
 		<input type="submit" name="update" value="Modify Article">
 	</form> 
 </fieldset>
