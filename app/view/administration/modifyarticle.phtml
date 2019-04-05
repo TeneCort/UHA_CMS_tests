@@ -1,0 +1,41 @@
+<?php include VIEW . 'header.phtml';
+
+	$action  = $this->getAction();
+	$article = $this->getArticle();
+	$categories = $this->getCategories();
+?>
+
+<h1><?php echo $action ?></h1>
+
+<fieldset>
+	<legend>My Article</legend>
+		<form action="/administration" method="POST">
+		Title:<br>
+		<input type="text" name="title" value="<?php echo $article->getTitle()->getTextContent() ?>"><br>
+		<div class="form-group">
+			<label for="category">Category select</label>
+			<select class="form-control" id="category" name="category">
+				<?php foreach ($categories as $category => $value) {
+					echo 
+					('
+						<option value="' . 
+						$value->getID() . 
+						'"' .
+						($value->getName()->getTextContent() == $article->getCategory()->getName()->getTextContent() ? 'selected' : '') .
+						'>' . 
+						$value->getName()->getTextContent() .
+						'</option>'
+					);
+				}?>
+			</select>
+		</div>
+		Text:<br>
+		<textarea name="text" id="editor">
+			<?php echo $article->getTextContent()->getTextContent() ?>
+		</textarea>
+		<input type="hidden" name="id" value="<?php echo $article->getID() ?>">
+		<input type="submit" name="updateArticle" value="Modify Article">
+	</form> 
+</fieldset>
+
+<?php include VIEW . 'footer.phtml';?>

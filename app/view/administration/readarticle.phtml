@@ -3,22 +3,25 @@
 	$action  = $this->getAction();
 	$article = $this->getArticle();
 
+highlight_string("<?php\n\$data =\n" . var_export($article, true) . ";\n?>");
 ?>
 
 <h1><?php echo $action ?></h1>
 
-<h2><?php echo $article->getTitle() ?></h2>
+<h2><?php echo $article->getTitle()->getTextContent() ?></h2>
 
-<p><?php echo $article->getTextContent() ?></p>
+<h3><?php echo $article->getCategory()->getName()->getTextContent() ?></h3>
+
+<p><?php echo $article->getTextContent()->getTextContent() ?></p>
 
 <form action="/administration" method="POST">
 	<input type="hidden" name="id" value="<?php echo $article->getID() ?>">
-	<input type="submit" name="delete" value="Delete Article">
+	<input type="submit" name="deleteArticle" value="Delete Article">
 </form>
 
 <form action="/administration/modifyarticle" method="POST">
 	<input type="hidden" name="id" value="<?php echo $article->getID() ?>">
-	<input type="submit" name="update" value="Edit Article">
+	<input type="submit" name="updateArticle" value="Edit Article">
 </form>
 
 

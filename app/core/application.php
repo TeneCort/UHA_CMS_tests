@@ -8,10 +8,6 @@ class Application {
 	protected $webPage;
 
 	public function __construct() {
-
-		$webPage = new webPage('hello', 'world');
-
-		echo $webPage->getName();
 		
 		$this->prepareURL();	
 

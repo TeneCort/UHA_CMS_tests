@@ -2,19 +2,22 @@
 
 class Article{
 
-	protected $articleID = '';
-    protected $articleTitle = '';
-    protected $articleTextContent = '';
-    /*protected $articleDate = '';
+	protected $articleID;
+    protected $articleTitle;
+    protected $articleTextContent;
+    protected $category;
+
+    /*
+    protected $articleDate = '';
     protected $articleTime = '';
     protected $articlePublisher = '';
-    protected $category;*/
+    */
     
     public function __construct(){
 
     }
 
-    public function getID(){
+    public function getID(): int{
     	return $this->articleID;
     }
 
@@ -22,24 +25,34 @@ class Article{
      * Not really needed since the ID is set through the sql request
      */
 
-    public function setID($id){
+    public function setID(int $id){
     	$this->articleID = $id;
     }
 
-    public function getTitle(){
+    public function getTitle(): TextElement{
+  
     	return $this->articleTitle;
     }
 
-    public function setTitle($newTitle){
+    public function setTitle(TextElement $newTitle){
     	$this->articleTitle = $newTitle;
     }
 
-    public function getTextContent(){
+    public function getTextContent(): TextElement{
+       
     	return $this->articleTextContent;
     }
 
-    public function setTextContent($newTextContent){
+    public function setTextContent(TextElement $newTextContent){
     	$this->articleTextContent = $newTextContent;
+    }
+
+    public function getCategory(): Category{
+        return $this->category;
+    }
+
+    public function setCategory(Category $newCategory){
+        $this->category = $newCategory;
     }
 
     /**

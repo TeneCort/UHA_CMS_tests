@@ -12,7 +12,7 @@ class View{
 		$this->viewData = $viewData;
 	}
 
-	public function render(){
+	public function render(): void{
 
 		if (file_exists(VIEW . $this->viewFile . '.phtml')) {
 
@@ -25,12 +25,20 @@ class View{
 		return (explode('\\', $this->viewFile)[1]);
 	}
 
-	public function getArticles(){
+	public function getArticles(): array{
 		return $this->viewData['articles'];
 	}
 
-	public function getArticle(){
+	public function getArticle(): Article{
 		return $this->viewData['article'];
+	}
+
+	public function showAdminNavBar(): AdminNavBar{
+		return $this->viewData['navBar'];
+	}
+
+	public function getCategories(): array{
+		return $this->viewData['categories'];
 	}
 
 }

@@ -5,33 +5,32 @@ class WebPage{
 	protected $webPageID;
 	protected $webPageName;
 	protected $components = [];
-	protected $pages = [];
 
-	function __construct($id, $name){
+	function __construct(String $id, String $name){
 		
 		$this->webPageID = $id;
 		$this->webPageName = $name;
 
 	}
 
-	function getID(){
+	function getID(): String{
 		return $this->webPageID;
 	}
 
-	function getName(){
+	function getName(): String{
 		return $this->webPageName;
 	}
 
-	function setName($newName){
+	function setName(String $newName){
 		$this->webPageName = $newName;
 	}
 
-	function addComponent($newComponent){
+	function addComponent(object $newComponent){
 		array_push($this->components, $newComponent);
 		
 	}
 
-	function getComponents(){
+	function getComponents(): object{
 		return $this->components;
 	}
 	
