@@ -1,7 +1,7 @@
 <?php
-	$action = $this->getAction();
+	$action  = $this->getAction();
 	$request = $_SERVER['REQUEST_URI'];
-	$url = explode('/', $request);
+	$url     = explode('/', $request);
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +17,10 @@
 	<?php
 	if ($url[1] == 'administration'){
 		$navBar = $this->showAdminNavBar();
-		$navBar->navBar();
+	}else{
+		$navBar = $this->showMenuBar();
 	}
+	$navBar->show();
 	?>
 
 

@@ -1,0 +1,23 @@
+<?php include VIEW . 'header.phtml';
+	$action   = $this->getAction();
+	$category = $this->getCategory();
+?>
+
+<h1><?php echo $action ?></h1>
+
+<fieldset>
+	<legend>My Category</legend>
+		<form action="/administration" method="POST">
+		Name:<br>
+		<input type="text" name="name" value="<?php echo $category->getName()->getTextContent() ?>"><br>
+		<input type="hidden" name="id" value="<?php echo $category->getID() ?>">
+		<input type="submit" name="updateCategory" value="Modify Article">
+	</form> 
+</fieldset>
+
+<form action="/administration" method="POST">
+	<input type="hidden" name="id" value="<?php echo $category->getID() ?>">
+	<input type="submit" name="deleteCategory" value="Delete Category">
+</form>
+
+<?php include VIEW . 'footer.phtml';?>

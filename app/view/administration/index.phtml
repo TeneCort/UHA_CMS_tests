@@ -1,33 +1,38 @@
 <?php include VIEW . 'header.phtml';
-	$action = $this->getAction();
-	$articles = $this->getArticles();
+	$action     = $this->getAction();
+	$articles   = $this->getArticles();
 	$categories = $this->getCategories();
+	$pages      = $this->getPages();
+	$menu       = $this->showMenuBar();
+	$colors		= $this->getNavBarColors();
 ?>
 
-<h1><?php echo $action ?></h1>
+<h2><?php echo $action ?></h2>
+
 <!-- ARTICLE SELECTION -->
+
 <div class="jumbotron">
-	<h1 class="display-4">Articles</h1>
-	<hr class="my-4">
+	<h2 class="display-5">Articles</h2>
+	<hr class="my-2">
 	<div class="dropdown">
 	  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    Choose Article
 	  </button>
 	  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 	  	<?php foreach ($articles as $article => $value) {
-
-
 	  		echo ('
 	  			<form action="/administration/readArticle/' . $value->getID() . '" method="POST">
-	  				<input class="dropdown-item" type="submit" name = "submitArticle" value="' . $value->getTitle()->getTextContent() . '">
+	  				<input class="dropdown-item" type="submit" name = "submitArticle" value="' . $value->getTitle()->getTextContent() . ' - ' . $value->getCategory()->getName()->getTextContent() . '">
 	  				<input type="hidden" name = "articleID" value="' . $value->getID() . '">
 	  			</form>
 	  			');
 	  	}?>
 	  </div>
 	</div>
-	<hr class="my-4">
+	<hr class="my-2">
+	
 	<!-- ARTICLE CREATION -->
+	
 	<form action="/administration" method="POST">
   		<div class="form-group">
   			<label for="title">Article Title</label>
@@ -38,7 +43,6 @@
   			<input type="text" class="form-control" id="text" aria-describedby="textHelp" placeholder="Enter article text" name="text">
   		</div>
 
-
   		<div class="form-group">
 			<label for="category">Category select</label>
 			<select class="form-control" id="category" name="category">
@@ -48,22 +52,33 @@
 			</select>
 		</div>
 
+		<div class="form-group">
+			<label for="category">Category select</label>
+			<select class="form-control" id="page" name="page">
+				<?php foreach ($pages as $page => $value) {
+					echo ('<option value="' . $value->getID() . '">' . $value->getName()->getTextContent() . '</option>');
+				}?>
+			</select>
+		</div>
+
 
   		<button type="submit" class="btn btn-dark" name ="createArticle" value="Create Article">Create Article</button>	
   	</form>
 </div>
+
 <!-- CATEGORY SELECTION -->
+
 <div class="jumbotron">
-	<h1 class="display-4">Categories</h1>
-	<hr class="my-4">
+	<h2 class="display-5">Categories</h2>
+	<hr class="my-2">
 	<div class="dropdown">
 		<button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		Choose Categories
+		Choose Category
 		</button>
 		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			<?php foreach ($categories as $category => $value) {
 			echo ('
-				<form action="/administration/readArticle/' . $value->getID() . '" method="POST">
+				<form action="/administration/modifycategory/' . $value->getID() . '" method="POST">
 					<input class="dropdown-item" type="submit" name = "submit" value="' . $value->getName()->getTextContent() . '">
 	  				<input type="hidden" name = "categoryID" value="' . $value->getID() . '">
 				</form>
@@ -71,15 +86,82 @@
 			}?>
 		</div>
 	</div>
-	<hr class="my-4">
+	<hr class="my-2">
+	
 	<!-- CATEGORY CREATION -->
+	
 	<form action="/administration" method="POST">
   		<div class="form-group">
-  			<label for="title">Category Title</label>
+  			<label for="title">Category Name</label>
   			<input type="text" class="form-control" id="name" aria-describedby="categoryHelp" placeholder="Enter category name" name="name">
   		</div>
   		<button type="submit" class="btn btn-dark" name ="createCategory" value="Create Category">Create Category</button>	
   	</form>
+  	
+  	<!-- CATEGORY DELETE -->
+
+
+</div>
+
+<!-- PAGE SELECTION -->
+
+<div class="jumbotron">
+	<h2 class="display-5">Pages</h2>
+	<hr class="my-2">
+	<div class="dropdown">
+		<button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		Choose Page
+		</button>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<?php foreach ($pages as $page => $value) {
+			echo ('
+				<form action="/administration/modifycategory/' . $value->getID() . '" method="POST">
+					<input class="dropdown-item" type="submit" name = "submit" value="' . $value->getName()->getTextContent() . '">
+	  				<input type="hidden" name = "categoryID" value="' . $value->getID() . '">
+				</form>
+			');
+			}?>
+		</div>
+	</div>
+	<hr class="my-2">
+
+	<!-- PAGE CREATION -->
+
+	<form action="/administration" method="POST">
+  		<div class="form-group">
+  			<label for="title">Page Name</label>
+  			<input type="text" class="form-control" id="name" aria-describedby="pageHelp" placeholder="Enter page name" name="name">
+  		</div>
+  		<button type="submit" class="btn btn-dark" name ="createPage" value="Create Page">Create Page</button>	
+  	</form>
+</div>
+
+<!-- NAVBAR MODIFICATION -->
+
+<div class="jumbotron">
+	<h2 class="display-5">Navbar</h2>
+	<hr class="my-2">
+	<div class="dropdown">
+		<form action="/administration" method="POST">
+			<button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Choose Color
+			</button>
+			<div class="form-group">
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<?php foreach ($colors as $color => $value) {
+					echo ('
+						<form action="/administration" method="POST">
+							<input class="dropdown-item ' . $value->getColor()->getTextContent() . '" type="submit" name = "updateNavBarColor" value="I">
+			  				<input type="hidden" name = "colorID" value="' . $value->getID() . '">
+						</form>
+					');
+					}?>
+				</div>
+			</div>
+  		</form>
+	</div>
+	<hr class="my-2">
+  	<?php $menu->show() ?>
 </div>
 
 <?php include VIEW . 'footer.phtml';?>

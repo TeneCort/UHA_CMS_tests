@@ -25,6 +25,7 @@ class Application {
 	protected function prepareURL() {
 
 		$request = trim($_SERVER['REQUEST_URI'], '/');
+		
 		if (!empty($request)) {
 			$url = explode('/', $request);
 			$this->controller = isset($url[0]) ? $url[0].'controller' : 'homecontroller';

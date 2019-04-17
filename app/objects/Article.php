@@ -1,11 +1,12 @@
 <?php  
 
-class Article{
+class Article {
 
 	protected $articleID;
     protected $articleTitle;
     protected $articleTextContent;
     protected $category;
+    protected $page;
 
     /*
     protected $articleDate = '';
@@ -17,7 +18,7 @@ class Article{
 
     }
 
-    public function getID(): int{
+    public function getID(): String{
     	return $this->articleID;
     }
 
@@ -25,12 +26,11 @@ class Article{
      * Not really needed since the ID is set through the sql request
      */
 
-    public function setID(int $id){
+    public function setID(String $id){
     	$this->articleID = $id;
     }
 
     public function getTitle(): TextElement{
-  
     	return $this->articleTitle;
     }
 
@@ -39,7 +39,6 @@ class Article{
     }
 
     public function getTextContent(): TextElement{
-       
     	return $this->articleTextContent;
     }
 
@@ -53,6 +52,14 @@ class Article{
 
     public function setCategory(Category $newCategory){
         $this->category = $newCategory;
+    }
+
+    public function getPage(): Page{
+        return $this->page;
+    }
+
+    public function setPage(Page $newPage){
+        $this->page = $newPage;
     }
 
     /**

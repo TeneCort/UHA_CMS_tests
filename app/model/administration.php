@@ -1,10 +1,16 @@
 <?php
 
-class administration extends Model{
+class Administration extends Model{
     
-    protected $articled;
+    protected $article;
 
     public function __construct(){
         parent:: __construct();          
     }
+
+    public function adminNavBar(): AdminNavBar{
+        $adminNavBar = new AdminNavBar();
+        return $adminNavBar;
+    }
+
 }

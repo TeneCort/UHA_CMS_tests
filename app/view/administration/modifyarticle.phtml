@@ -1,7 +1,7 @@
 <?php include VIEW . 'header.phtml';
 
-	$action  = $this->getAction();
-	$article = $this->getArticle();
+	$action     = $this->getAction();
+	$article    = $this->getArticle();
 	$categories = $this->getCategories();
 ?>
 
@@ -21,7 +21,9 @@
 						<option value="' . 
 						$value->getID() . 
 						'"' .
-						($value->getName()->getTextContent() == $article->getCategory()->getName()->getTextContent() ? 'selected' : '') .
+						($value->getName()->getTextContent() == $article->getCategory()->getName()->getTextContent() 
+							? 'selected' 
+							: '') .
 						'>' . 
 						$value->getName()->getTextContent() .
 						'</option>'
