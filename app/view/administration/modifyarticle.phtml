@@ -3,6 +3,7 @@
 	$action     = $this->getAction();
 	$article    = $this->getArticle();
 	$categories = $this->getCategories();
+	$pages		= $this->getPages();
 ?>
 
 <h1><?php echo $action ?></h1>
@@ -17,8 +18,7 @@
 			<select class="form-control" id="category" name="category">
 				<?php foreach ($categories as $category => $value) {
 					echo 
-					('
-						<option value="' . 
+					('<option value="' . 
 						$value->getID() . 
 						'"' .
 						($value->getName()->getTextContent() == $article->getCategory()->getName()->getTextContent() 
@@ -26,8 +26,22 @@
 							: '') .
 						'>' . 
 						$value->getName()->getTextContent() .
-						'</option>'
-					);
+						'</option>');
+				}?>
+			</select>
+			<label for="page">Page select</label>
+			<select class="form-control" id="page" name="page">
+				<?php foreach ($pages as $page => $value) {
+					echo 
+					('<option value="' . 
+						$value->getID() . 
+						'"' .
+						($value->getName()->getTextContent() == $article->getPage()->getName()->getTextContent() 
+							? 'selected' 
+							: '') .
+						'>' . 
+						$value->getName()->getTextContent() .
+						'</option>');
 				}?>
 			</select>
 		</div>

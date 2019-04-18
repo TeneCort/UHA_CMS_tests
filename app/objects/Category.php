@@ -1,20 +1,18 @@
 <?php 
-
 class Category{
 
-	protected $categoryID;
-	protected $categoryName;
-	protected $subCategories;
+	protected $categoryID, $categoryName, $subCategories;
 
-	function __construct(){
-		
+	function __construct(String $id, TextElement $name){
+		$this->categoryID = $id;
+		$this->categoryName = $name;
 	}
 
-	public function setID(int $id){
+	public function setID(String $id){
 		$this->categoryID = $id;
 	}
 	
-	public function getID(): int{
+	public function getID(): String{
 		return $this->categoryID;
 	}
 
@@ -25,7 +23,5 @@ class Category{
 	public function getName(): TextElement{
 		return $this->categoryName;
 	}
-
-
 }
 ?>

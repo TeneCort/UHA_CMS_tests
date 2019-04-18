@@ -2,20 +2,19 @@
 
 class Article {
 
-	protected $articleID;
-    protected $articleTitle;
-    protected $articleTextContent;
-    protected $category;
-    protected $page;
-
+	protected $articleID, $articleTitle, $articleTextContent, $category, $page;
     /*
     protected $articleDate = '';
     protected $articleTime = '';
     protected $articlePublisher = '';
     */
     
-    public function __construct(){
-
+    public function __construct(String $id, TextElement $title, TextElement $text, Category $category, Page $page){
+        $this->articleID          = $id;
+        $this->articleTitle       = $title;
+        $this->articleTextContent = $text;
+        $this->category           = $category;
+        $this->page               = $page;
     }
 
     public function getID(): String{

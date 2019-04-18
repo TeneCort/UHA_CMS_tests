@@ -1,16 +1,12 @@
 <?php 
-
 class WebPage{
 
-	protected $webPageID;
-	protected $webPageName;
+	protected $webPageID, $webPageName;
 	protected $components = [];
 
 	function __construct(String $id, String $name){
-		
 		$this->webPageID = $id;
 		$this->webPageName = $name;
-
 	}
 
 	function getID(): String{
@@ -27,14 +23,10 @@ class WebPage{
 
 	function addComponent(object $newComponent){
 		array_push($this->components, $newComponent);
-		
 	}
 
 	function getComponents(): object{
 		return $this->components;
 	}
-	
 }
-
-
 ?>

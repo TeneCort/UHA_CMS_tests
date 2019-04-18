@@ -1,0 +1,23 @@
+<?php include VIEW . 'header.phtml';
+	$action   = $this->getAction();
+	$page     = $this->getPage();
+?>
+
+<h1><?php echo $action ?></h1>
+
+<fieldset>
+	<legend>My Page</legend>
+		<form action="/administration" method="POST">
+		Name:<br>
+		<input type="text" name="name" value="<?php echo $page->getName()->getTextContent() ?>"><br>
+		<input type="hidden" name="id" value="<?php echo $page->getID() ?>">
+		<input type="submit" name="updatePage" value="Modify Page">
+	</form> 
+</fieldset>
+
+<form action="/administration" method="POST">
+	<input type="hidden" name="id" value="<?php echo $page->getID() ?>">
+	<input type="submit" name="deletePage" value="Delete Page">
+</form>
+
+<?php include VIEW . 'footer.phtml';?>

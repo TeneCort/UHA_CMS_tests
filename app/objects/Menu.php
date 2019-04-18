@@ -12,7 +12,6 @@ class Menu {
 
 	public function show(): void{
 		echo $this->navBarTemplate($this->pages);
-
 	}
 
 	public function navBarTemplate(array $pages): void{
@@ -33,14 +32,12 @@ class Menu {
 	}
 
 	public function li(TextElement $linkTag): TextElement{
-		$listTagElement = new TextElement();
-		$listTagElement->setTextContent('<li class="nav-item active">' . $linkTag->getTextContent() . '</li>');
+		$listTagElement = new TextElement('<li class="nav-item active">' . $linkTag->getTextContent() . '</li>');
 		return $listTagElement;
 	}
 
 	public function linkTag(String $pageName): TextElement{
-		$linkTagElement = new TextElement();
-		$linkTagElement->setTextContent('<a class="nav-link" href="/home/ello/'. $pageName .'"> '. $pageName .' <span class="sr-only">(current)</span></a>');
+		$linkTagElement = new TextElement('<a class="nav-link" href="/home/ello/'. $pageName .'"> '. $pageName .' <span class="sr-only">(current)</span></a>');
 		return $linkTagElement;
 	}
 
@@ -55,7 +52,5 @@ class Menu {
 	public function setColor(NavBarColor $color){
 		$this->color = $color;
 	}
-
 }
-
 ?>

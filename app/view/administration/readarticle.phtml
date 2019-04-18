@@ -14,6 +14,9 @@ highlight_string("<?php\n\$data =\n" . var_export($article, true) . ";\n?>");
 
 <p><?php echo $article->getTextContent()->getTextContent() ?></p>
 
+<p><?php echo $article->getPage()->getName()->getTextContent() ?></p>
+
+
 <form action="/administration" method="POST">
 	<input type="hidden" name="id" value="<?php echo $article->getID() ?>">
 	<input type="submit" name="deleteArticle" value="Delete Article">

@@ -3,9 +3,6 @@ class Model {
 
     static protected $user, $pass, $name, $conn;
 
-    protected $article, $articleTitle, $articleTextContent;
-    protected $articleCategory, $categoryName;
-
     public function __construct() {
         $this->dbConfig();
         $this->connection();
@@ -28,7 +25,8 @@ class Model {
         $this::$pass = $db['pass'];
         $this::$name = $db['name'];
     }
-        public function createArticle(String $title, String $textContent, String $category, String $page): void{
+
+    public function createArticle(String $title, String $textContent, String $category, String $page): void{
         $req = "INSERT `article` (`title`, `textContent`, `category`, `page`) VALUES ('$title', '$textContent', '$category', '$page')";
         $this::$conn->exec($req);           
         echo "New record created successfully"; 
@@ -59,40 +57,18 @@ class Model {
 
         $res = $this::$conn->query($req);
 
-        $articles = [];
-
         while ($row = $res->fetch(PDO::FETCH_OBJ)) { 
 
-            $this->article = new Article();
-
-            $this->articleTitle = new TextElement();
-            $this->articleTitle->setTextContent($row->a_title);
-            $this->article->setTitle($this->articleTitle);
-
-            $this->articleTextContent = new TextElement();
-            $this->articleTextContent->setTextContent($row->a_textContent);
-            $this->article->setTextContent($this->articleTextContent);
-
-            $this->articleCategory = new Category();
-            $this->categoryName = new TextElement();
-            $this->categoryName->setTextContent($row->c_name);
-            $this->articleCategory->setName($this->categoryName);
-            $this->articleCategory->setID($row->c_id);
-            $this->article->setCategory($this->articleCategory);
-
-            $this->articlePage = new Page();
-            $this->pageName = new TextElement();
-            $this->pageName->setTextContent($row->p_name);
-            $this->articlePage->setName($this->pageName);
-            $this->articlePage->setID($row->p_id);
-            $this->article->setPage($this->articlePage);
-
-            $this->article->setID($row->a_id);
+            $this->article = new Article(
+                $row->a_id, 
+                new TextElement($row->a_title),
+                new TextElement($row->a_textContent),
+                new Category   ($row->c_id, new TextElement($row->c_name)),
+                new Page       ($row->p_id, new TextElement($row->p_name))
+            );
 
             $articles[$row->a_id] = $this->article;
-
         }
-
         return $articles;
     }
 
@@ -102,14 +78,15 @@ class Model {
         echo "Article deleted successfully"; 
     }
 
-    public function updateArticle(String $articleID, String $articleTitle, String $textContent, String $categoryID): void{
+    public function updateArticle(String $articleID, String $articleTitle, String $textContent, String $categoryID, String $pageID): void{
         $req = 
         "UPDATE 
             `article` 
         SET 
             `title`       = '$articleTitle', 
             `textContent` = '$textContent',
-            `category`    = '$categoryID'
+            `category`    = '$categoryID',
+            `page`        = '$pageID'
         WHERE 
             `id`          = '$articleID'";
         $this::$conn->exec($req);         
@@ -125,32 +102,15 @@ class Model {
     public function readCategories(): array{
         $req = ("SELECT * FROM category");
         $res = $this::$conn->query($req);
-        $categories = [];
-
         while ($row = $res->fetch(PDO::FETCH_OBJ)) { 
-
-            $this->category = new Category();
-            $this->categoryName = new TextElement();
-            $this->categoryName->setTextContent($row->name);
-            $this->category->setName($this->categoryName);
-            $this->category->setID($row->id);
-
-            $categories[$row->id] = $this->category;
+            $categories[$row->id] = new Category($row->id, new TextElement($row->name));
         }
         return $categories;
     }
 
     public function updateCategory(String $categoryName, String $categoryID): void{
-        $req = 
-        "UPDATE 
-            `category` 
-        SET 
-            `name` = '$categoryName'
-        WHERE 
-            `id`   = '$categoryID'";
-
+        $req = "UPDATE `category` SET `name` = '$categoryName' WHERE `id` = '$categoryID'";
         $this::$conn->exec($req);   
-
         echo "Category updated successfully";
     }
 
@@ -163,52 +123,40 @@ class Model {
     public function createPage(String $pageName): void{
         $req = "INSERT `page` (`name`) VALUES ('$pageName')";
         $this::$conn->exec($req);           
-        echo "New record created successfully"; 
+        echo "New page created successfully"; 
     }
 
     public function readPages(): array{
         $req = ("SELECT * FROM page");
-        $res = $this::$conn->query($req);           
-
-        $pages = [];
-
-        while ($row = $res->fetch(PDO::FETCH_OBJ)) { 
-
-            $this->page = new Page();
-            $this->pageName = new TextElement();
-            $this->pageName->setTextContent($row->name);
-            $this->page->setName($this->pageName);
-            $this->page->setID($row->id);
-
-            array_push($pages, $this->page);
+        $res = $this::$conn->query($req);
+        while ($row = $res->fetch(PDO::FETCH_OBJ)) {
+            $pages[$row->id] = new Page($row->id, new TextElement($row->name));
         }
         return $pages;
     }
     
+    public function updatePage(String $pageName, String $pageID): void{
+        $req = "UPDATE `page` SET `name` = '$pageName' WHERE `id`   = '$pageID'";
+        $this::$conn->exec($req);   
+        echo "Page updated successfully";
+    }
+
+    public function deletePage(String $pageID): void{
+        $req = "DELETE  FROM `page` WHERE `id` = '$pageID'";
+        $this::$conn->exec($req);       
+        echo "Page deleted successfully"; 
+    }
+
     public function Menu(): Menu{
-        $pages = $this->readPages();
-        $color = $this->readnavBarColor();
-        $menu = new Menu($pages, $color);
-        return $menu;
+        return new Menu($this->readPages(), $this->readnavBarColor());;
     }
 
     public function readNavBarColors(): array{
         $req = ("SELECT * FROM navbar_color");
-        $res = $this::$conn->query($req);  
-
-        $colors = [];
-
-        while ($row = $res->fetch(PDO::FETCH_OBJ)) { 
-
-            $this->color = new NavBarColor();
-            $this->colorName = new TextElement();
-            $this->colorName->setTextContent($row->color);
-            $this->color->setColor($this->colorName);
-            $this->color->setID($row->id);
-            
-            array_push($colors, $this->color);
+        $res = $this::$conn->query($req);
+        while ($row = $res->fetch(PDO::FETCH_OBJ)) {             
+            $colors[$row->id] = new NavBarColor($row->id, new TextElement($row->color));
         }
-
         return $colors;
     }
     
@@ -224,24 +172,16 @@ class Model {
             WHERE  
                    n.color = c.id
             ");
-
-        $res = $this::$conn->query($req);  
-        $navColor = new NavBarColor();
+        $res = $this::$conn->query($req);
         while ($row = $res->fetch(PDO::FETCH_OBJ)) { 
-            $color = new TextElement();
-            $color->setTextContent($row->c_color);
-            $navColor->setColor($color);
-            $navColor->setID($row->c_id);
+            $navColor = new NavBarColor($row->c_id, new TextElement($row->c_color));
         }
         return $navColor;
     }
 
     public function updateNavBarColor(String $color){
         $req = ("UPDATE `navBar` SET `color` = '$color'");
-
         $this::$conn->exec($req);   
-
         echo "NavBar color updated successfully";
-
     }
 }

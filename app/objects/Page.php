@@ -1,14 +1,14 @@
 <?php
 class Page {
 
-	protected $pageID;
-	protected $pageName;
+	protected $pageID, $pageName;
 	
-	public function __construct(){
-
+	public function __construct(String $id, TextElement $name){
+		$this->pageID = $id;
+		$this->pageName = $name;
 	}
 
-	public function getID(): int{
+	public function getID(): String{
 		return $this->pageID;
 	}
 
@@ -24,5 +24,4 @@ class Page {
 		$this->pageName = $newName;
 	}
 }
-
 ?>

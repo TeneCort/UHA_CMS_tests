@@ -2,8 +2,7 @@
 
 class View{
 	
-	protected $viewFile;
-	protected $viewData;
+	protected $viewFile, $viewData;
 
 	public function __construct($viewFile, $viewData){
 
@@ -50,6 +49,10 @@ class View{
 
 	public function getPages(): array{
 		return $this->viewData['pages'];
+	}
+
+	public function getPage(): Page{
+		return $this->viewData['page'];
 	}
 
 	public function getNavBarColors(): array{

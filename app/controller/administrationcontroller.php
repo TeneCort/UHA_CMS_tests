@@ -10,7 +10,7 @@ class administrationController extends Controller {
 			$this->model->createArticle($_POST['title'], $_POST['text'], $_POST['category'], $_POST['page']);
 		}
 		if (isset($_POST['updateArticle'])) {
-			$this->model->updateArticle($_POST['id'], $_POST['title'], $_POST['text'], $_POST['category'] );
+			$this->model->updateArticle($_POST['id'], $_POST['title'], $_POST['text'], $_POST['category'], $_POST['page'] );
 		}
 		if (isset($_POST['deleteArticle'])) {
 			$this->model->deleteArticle($_POST['id']);
@@ -26,6 +26,12 @@ class administrationController extends Controller {
 		}
 		if (isset($_POST['createPage'])) {
 			$this->model->createPage($_POST['name']);
+		}
+		if (isset($_POST['updatePage'])) {
+			$this->model->updatePage($_POST['name'], $_POST['id']);
+		}
+		if (isset($_POST['deletePage'])) {
+			$this->model->deletePage($_POST['id']);
 		}
 		if (isset($_POST['updateNavBarColor'])) {
 			$this->model->updateNavBarColor($_POST['colorID']);
@@ -82,11 +88,12 @@ class administrationController extends Controller {
 		$this->model('administration');
 
 		$this->view('administration' . DIRECTORY_SEPARATOR . 'modifyarticle', [
-			'article'    => $this->model->readArticles()[$_POST['id']],
 			'id'         => $id,
 			'name'       => $name,
+			'article'    => $this->model->readArticles()[$_POST['id']],
 			'navBar'     => $this->model->adminNavBar(),
-			'categories' => $this->model->readCategories()
+			'categories' => $this->model->readCategories(),
+			'pages'		 => $this->model->readPages()
 		] );
 
 		$this->view->render();
@@ -101,6 +108,20 @@ class administrationController extends Controller {
 			'name'        => $name,
 			'navBar'      => $this->model->adminNavBar(),
 			'category'    => $this->model->readCategories()[$_POST['categoryID']]
+		] );
+
+		$this->view->render();
+	}
+
+	public function modifyPage(String $id = "", String $name = ""): void{
+
+		$this->model('administration');
+
+		$this->view('administration' . DIRECTORY_SEPARATOR . 'modifypage', [
+			'id'          => $id,
+			'name'        => $name,
+			'navBar'      => $this->model->adminNavBar(),
+			'page'        => $this->model->readPages()[$_POST['pageID']]
 		] );
 
 		$this->view->render();

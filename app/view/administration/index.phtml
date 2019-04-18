@@ -38,13 +38,14 @@
   			<label for="title">Article Title</label>
   			<input type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter article title" name="title">
   		</div>	
+  		
   		<div class="form-group">
   			<label for="text">Article Text</label>
   			<input type="text" class="form-control" id="text" aria-describedby="textHelp" placeholder="Enter article text" name="text">
   		</div>
 
   		<div class="form-group">
-			<label for="category">Category select</label>
+			<label for="category">Category</label>
 			<select class="form-control" id="category" name="category">
 				<?php foreach ($categories as $category => $value) {
 					echo ('<option value="' . $value->getID() . '">' . $value->getName()->getTextContent() . '</option>');
@@ -53,15 +54,13 @@
 		</div>
 
 		<div class="form-group">
-			<label for="category">Category select</label>
+			<label for="category">Page</label>
 			<select class="form-control" id="page" name="page">
 				<?php foreach ($pages as $page => $value) {
 					echo ('<option value="' . $value->getID() . '">' . $value->getName()->getTextContent() . '</option>');
 				}?>
 			</select>
 		</div>
-
-
   		<button type="submit" class="btn btn-dark" name ="createArticle" value="Create Article">Create Article</button>	
   	</form>
 </div>
@@ -115,9 +114,9 @@
 		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 			<?php foreach ($pages as $page => $value) {
 			echo ('
-				<form action="/administration/modifycategory/' . $value->getID() . '" method="POST">
+				<form action="/administration/modifypage/' . $value->getID() . '" method="POST">
 					<input class="dropdown-item" type="submit" name = "submit" value="' . $value->getName()->getTextContent() . '">
-	  				<input type="hidden" name = "categoryID" value="' . $value->getID() . '">
+	  				<input type="hidden" name = "pageID" value="' . $value->getID() . '">
 				</form>
 			');
 			}?>

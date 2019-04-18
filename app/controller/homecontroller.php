@@ -1,15 +1,19 @@
 <?php
 
 class homeController extends Controller{
+
+	public function getUrl(): array{
+		$request = $_SERVER['REQUEST_URI'];
+		$id      = explode('/', $request);
+		return $id;
+	}
 	
 	public function index(String $id = "", String $name = ""): void{
-		$request = $_SERVER['REQUEST_URI'];
-		$id     = explode('/', $request);
-		
+
 		$this->model('home');
 
 		$this->view('home' . DIRECTORY_SEPARATOR . 'index', [
-			'id'       => $id,
+			'id'       => $this->getUrl(),
 			'name'     => $name,
 			'menu'     => $this->model->Menu(),
 			'pages'    => $this->model->readPages(),
@@ -21,12 +25,10 @@ class homeController extends Controller{
 
 	public function ello(String $id = "", String $name = ""): void{
 
-		$request = $_SERVER['REQUEST_URI'];
-		$id     = explode('/', $request);
 		$this->model('home');
 
 		$this->view('home' . DIRECTORY_SEPARATOR . 'ello', [
-			'id'       => $id,
+			'id'       => $this->getUrl(),
 			'name'     => $name,
 			'menu'     => $this->model->Menu(),
 			'pages'    => $this->model->readPages(),
@@ -35,9 +37,5 @@ class homeController extends Controller{
 		]);
 		$this->view->render();
 	}
-
-
-
 }
-
 ?>

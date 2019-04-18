@@ -1,10 +1,13 @@
 <?php
-
 class NavBarColor {
 
-	protected $id;
-	protected $color;
+	protected $id, $color;
 	protected $colors = [];
+
+	public function __construct(String $id, TextElement $color){
+		$this->id = $id;
+		$this->color = $color;
+	}
 
 	public function getID(): String{
 		return $this->id; 
@@ -22,6 +25,4 @@ class NavBarColor {
 		$this->color = $newColor;
 	}
 }
-
-
 ?>

@@ -1,5 +1,4 @@
 <?php  
-
 class AdminNavBar {
 	public function show(): void{
 		echo '
@@ -13,6 +12,4 @@ class AdminNavBar {
 			';
 	}
 }
-
-
 ?>
