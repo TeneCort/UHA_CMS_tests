@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Ven 05 Avril 2019 à 13:28
+-- Généré le :  Mar 23 Avril 2019 à 17:31
 -- Version du serveur :  10.1.38-MariaDB-0ubuntu0.18.04.1
 -- Version de PHP :  7.2.15-0ubuntu0.18.04.2
 
@@ -34,6 +34,14 @@ CREATE TABLE `article` (
   `page` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Contenu de la table `article`
+--
+
+INSERT INTO `article` (`id`, `title`, `textContent`, `category`, `page`) VALUES
+(1, 'a1', 't1', 1, 1),
+(2, 'a2', '<p>t2</p>', 2, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -50,9 +58,73 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'Music'),
-(2, 'Coding'),
-(3, 'Random');
+(1, 'cat1'),
+(2, 'categoooo'),
+(3, 'p2');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `navBar`
+--
+
+CREATE TABLE `navBar` (
+  `id` smallint(6) NOT NULL,
+  `color` smallint(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Contenu de la table `navBar`
+--
+
+INSERT INTO `navBar` (`id`, `color`) VALUES
+(1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `navbar_color`
+--
+
+CREATE TABLE `navbar_color` (
+  `id` tinyint(4) NOT NULL,
+  `color` tinytext COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Contenu de la table `navbar_color`
+--
+
+INSERT INTO `navbar_color` (`id`, `color`) VALUES
+(1, 'bg-primary'),
+(2, 'bg-secondary'),
+(3, 'bg-success'),
+(4, 'bg-danger'),
+(5, 'bg-warning'),
+(6, 'bg-info'),
+(7, 'bg-light'),
+(8, 'bg-dark'),
+(9, 'bg-white'),
+(10, 'bg-transparent');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `page`
+--
+
+CREATE TABLE `page` (
+  `id` smallint(6) NOT NULL,
+  `name` tinytext COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Contenu de la table `page`
+--
+
+INSERT INTO `page` (`id`, `name`) VALUES
+(1, 'p13'),
+(3, 'sfgsdfs');
 
 -- --------------------------------------------------------
 
@@ -90,6 +162,25 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `navBar`
+--
+ALTER TABLE `navBar`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `color` (`color`);
+
+--
+-- Index pour la table `navbar_color`
+--
+ALTER TABLE `navbar_color`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `page`
+--
+ALTER TABLE `page`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `webPage`
 --
 ALTER TABLE `webPage`
@@ -103,12 +194,27 @@ ALTER TABLE `webPage`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `navBar`
+--
+ALTER TABLE `navBar`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `navbar_color`
+--
+ALTER TABLE `navbar_color`
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT pour la table `page`
+--
+ALTER TABLE `page`
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `webPage`
 --
