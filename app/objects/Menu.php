@@ -63,7 +63,7 @@ class Menu {
 	}
 
 	public function linkTag(String $pageName): TextElement{
-		$linkTagElement = new TextElement('<a class="nav-link" href="/home/ello/'. $pageName .'"> '. $pageName .' <span class="sr-only">(current)</span></a>');
+		$linkTagElement = new TextElement('<a class="nav-link" href="/home/pages/'. $pageName .'"> '. $pageName .' <span class="sr-only">(current)</span></a>');
 		return $linkTagElement;
 	}
 

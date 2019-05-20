@@ -2,6 +2,7 @@
 	$action  = $this->getAction();
 	$request = $_SERVER['REQUEST_URI'];
 	$url     = explode('/', $request);
+	$img 	 = $this->getBgImage();
 ?>
 
 <!DOCTYPE html>
@@ -13,13 +14,14 @@
 	<script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
 </head>
 <body>
-	<?php
-	if ($url[1] == 'administration'){
-		$navBar = $this->showAdminNavBar();
-	}else{
-		$navBar = $this->showMenuBar();
-	}$navBar->show();
-	?>
+	<div>
+		<?php
+		if ($url[1] == 'administration'){
+			$navBar = $this->showAdminNavBar();
+		}else{
+			$navBar = $this->showMenuBar();
+		}$navBar->show();
+		?>
 
 
 

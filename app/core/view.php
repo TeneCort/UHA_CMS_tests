@@ -62,6 +62,10 @@ class View{
 	public function getPageID(): String{
 		return $this->viewData['id'][3];
 	}
+
+	public function getBgImage(){
+		return $this->viewData['img'];
+	}
 }
 
 

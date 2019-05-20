@@ -36,6 +36,9 @@ class administrationController extends Controller {
 		if (isset($_POST['updateNavBarColor'])) {
 			$this->model->updateNavBarColor($_POST['colorID']);
 		}
+		if (isset($_POST['setBackgroundImage'])) {
+			$this->model->imageUpload();
+		}
 		$this->view('administration' . DIRECTORY_SEPARATOR . 'index', [
 			'id'         => $id,
 			'name'       => $name,

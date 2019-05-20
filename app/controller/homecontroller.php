@@ -18,16 +18,17 @@ class homeController extends Controller{
 			'menu'     => $this->model->Menu(),
 			'pages'    => $this->model->readPages(),
 			'articles' => $this->model->readArticles(),
-			'colors'   => $this->model->readNavBarColors()
+			'colors'   => $this->model->readNavBarColors(),
+			'img'      => $this->model->imgTest()
 		]);
 		$this->view->render();
 	}
 
-	public function ello(String $id = "", String $name = ""): void{
+	public function pages(String $id = "", String $name = ""): void{
 
 		$this->model('home');
 
-		$this->view('home' . DIRECTORY_SEPARATOR . 'ello', [
+		$this->view('home' . DIRECTORY_SEPARATOR . 'pages', [
 			'id'       => $this->getUrl(),
 			'name'     => $name,
 			'menu'     => $this->model->Menu(),
