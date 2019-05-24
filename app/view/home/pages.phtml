@@ -10,12 +10,16 @@ $id       = $this->getPageID();
 <?php 
 	foreach ($articles as $article => $value) {
 		if ($value->getPage()->getName()->getTextContent() == $id) {
-			echo $value->getTitle()->getTextContent();
-			echo '</br>';
-			echo $value->getTextContent()->getTextContent();
-			echo '</br>';
-			echo $value->getCategory()->getName()->getTextContent();
-			echo '</br></br>';
+			echo '<div class="container-fluid">';
+			echo 	'<div class="card text-white bg-primary mb-3" >';
+			echo 		'<div class="card-header"> ' . $value->getCategory()->getName()->getTextContent() . ' </div>';
+			echo 	   '<div class="card-body">';
+			echo 	   	'<h4 class="card-title">' . $value->getTitle()->getTextContent() . '</h4>';
+			echo 			'<img style="height: 200px; width: 100%; display: block;" src="" alt="Card image">';
+			echo 	   	'<p class="card-text"> ' . $value->getTextContent()->getTextContent() . ' </p>';
+			echo 	   '</div>';
+			echo 	'</div>';
+			echo '</div>';
 		}	
 	}
 ?>

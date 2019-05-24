@@ -186,9 +186,15 @@ class Model {
     }
 
     public function imageUpload(){
+
+        echo $_FILES["fileToUpload"]["name"];
+
         $target_dir = ROOT . 'public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
+
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
         $uploadOk = 1;
+
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 
@@ -233,7 +239,7 @@ class Model {
     }
 
     public function imgTest(){
-        $img= new BackgroundImage();
+        $img = new BackgroundImage();
         return $img;
     }
 }
