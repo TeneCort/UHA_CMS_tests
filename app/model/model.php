@@ -79,8 +79,8 @@ class Model {
     }
 
     public function updateArticle(String $articleID, String $articleTitle, String $textContent, String $categoryID, String $pageID): void{
-        $req = 
-        "UPDATE 
+        $req = "
+        UPDATE 
             `article` 
         SET 
             `title`       = '$articleTitle', 
