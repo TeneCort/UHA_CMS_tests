@@ -66,7 +66,10 @@ class View{
 	public function getBgImage(){
 		return $this->viewData['img'];
 	}
-}
 
+	public function getTests(){
+		return $this->viewData['ello'];
+	}
+}
 
 ?>

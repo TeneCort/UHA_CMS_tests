@@ -19,7 +19,17 @@ class Application {
 
 				 call_user_func_array([$this->controller, $this->action], $this->param);
 			}
-		}else echo 'THERE IS A PROBLEM MATE! Application';
+
+			else {
+				echo 'THERE IS A PROBLEM MATE! Controller. ';
+				echo 'Action : ' . $this->action;
+				echo 'Controller : ' . $this->controller;
+				echo 'Param : ' . $this->param;
+				echo 'WebPage : ' . $this->webPage;
+			}
+		}
+
+		else echo 'THERE IS A PROBLEM MATE! Application';
 	}
 
 	protected function prepareURL() {

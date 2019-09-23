@@ -55,6 +55,8 @@ class administrationController extends Controller {
 
 	public function aboutUs(String $id = "", String $name = ""): void{
 
+		$this->model('administration');
+
 		$this->view('administration' . DIRECTORY_SEPARATOR . 'aboutUs');
 		$this->view->render();
 	}

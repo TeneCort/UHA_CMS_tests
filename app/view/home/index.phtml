@@ -2,21 +2,23 @@
 
 	$action   = $this->getAction();
 	$articles = $this->getArticles();
+	
 ?>
 <h1><?php echo $action ?></h1>
 
 <?php
 foreach ($articles as $article => $value) {	
 	echo '<div class="container-fluid">';
-			echo 	'<div class="card text-white bg-primary mb-3" >';
-			echo 		'<div class="card-header"> ' . $value->getCategory()->getName()->getTextContent() . ' </div>';
-			echo 	   '<div class="card-body">';
-			echo 	   	'<h4 class="card-title">' . $value->getTitle()->getTextContent() . '</h4>';
-			echo 			'<img style="height: 200px; width: 100%; display: block;" src="" alt="Card image">';
-			echo 	   	'<p class="card-text"> ' . $value->getTextContent()->getTextContent() . ' </p>';
-			echo 	   '</div>';
-			echo 	'</div>';
-			echo '</div>';
+	echo 	'<div class="card text-white bg-primary mb-3" >';
+	echo 		'<div class="card-header"> ' . $value->getCategory()->getName()->getTextContent() . ' </div>';
+	echo 	   '<div class="card-body">';
+	echo 	   	'<h4 class="card-title">' . $value->getTitle()->getTextContent() . '</h4>';
+	echo 			'<img style="height: 200px; width: 100%; display: block;" src="" alt="Card image">';
+	echo 	   	'<p class="card-text"> ' . $value->getTextContent()->getTextContent() . ' </p>';
+	echo 	   '</div>';
+	echo 	'</div>';
+	echo '</div>';
 }
+echo '</div>';
 ?>
 <?php include VIEW . 'footer.phtml';?>

@@ -1,8 +1,7 @@
 <?php 
 class backgroundImage{
 
-
-	protected $imageName = ROOT . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'uploads' .DIRECTORY_SEPARATOR . 'RICHARD.jpg';
+	protected $imageName = ROOT . 'public' . DIRECTORY_SEPARATOR . 'uploads' .DIRECTORY_SEPARATOR . 'images.jpeg';
 
 	function __construct(){
 	}
@@ -28,8 +27,7 @@ class backgroundImage{
 	}
 
 	function showImage(){
-
-		return '<style="background-image : src("' . $imageName . '"); ">';
+		return 'style="background: url(/var/www/html/Ioannis-fil_rouge/public/uploads/images.jpeg)"';
 	}
 }
 ?>
