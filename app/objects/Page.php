@@ -1,7 +1,9 @@
 <?php
 class Page {
 
-	protected $pageID, $pageName, $articles;
+	protected $pageID, $pageName;
+
+	protected $articles = array(1,2,3);
 	
 	public function __construct(String $id, TextElement $name)
 	{
@@ -29,14 +31,36 @@ class Page {
 		$this->pageName = $newName;
 	}
 
+	public function getArticles(): array
+	{
+		return $this->articles;
+	}
+
+	public function setArticles(array $articles)
+	{
+		$this->articles = $articles;
+	}
+
 	public function addArticle(Article $addedArticle) : void
 	{
-		//$this->articles
+		array_push($this->articles, $addedArticle->getID());
 	}
 
 	public function removeArticle(Article $removedArticle) : void
 	{
+		
+	}
 
+	public function arrayToLongString() : String
+	{
+		$arrayToString = implode(",", $this->articles);
+		return $arrayToString;
+	}
+
+	public function longStringToArray() : array
+	{
+		$stringToArray = explode(',', $stringToArray);
+		return $stringToArray;
 	}
 }
 ?>

@@ -127,8 +127,24 @@ class Model {
     }
 
     public function readPages(): array{
+
+        /*$req = ("
+            SELECT
+                p.id   AS p_id,
+                p.name AS p_name,
+                a.page AS a_page,
+                a.id   AS a_id
+            FROM 
+                article a,
+                page p
+            WHERE
+                p.id = a.page
+        ");*/
+
         $req = ("SELECT * FROM page");
+
         $res = $this::$conn->query($req);
+
         while ($row = $res->fetch(PDO::FETCH_OBJ)) {
             $pages[$row->id] = new Page($row->id, new TextElement($row->name));
         }
