@@ -28,7 +28,13 @@ class Model {
 
     public function createArticle(String $title, String $textContent, String $category, String $page): void{
         $req = "INSERT `article` (`title`, `textContent`, `category`, `page`) VALUES ('$title', '$textContent', '$category', '$page')";
+
         $this::$conn->exec($req);           
+
+        $last_id = $this::$conn->lastInsertId();
+
+        echo "Records inserted successfully. Last inserted ID is: " . $last_id;
+
         echo "New record created successfully"; 
     }
 
@@ -128,7 +134,7 @@ class Model {
 
     public function readPages(): array{
 
-        /*$req = ("
+        $req = ("
             SELECT
                 p.id   AS p_id,
                 p.name AS p_name,
@@ -139,22 +145,30 @@ class Model {
                 page p
             WHERE
                 p.id = a.page
-        ");*/
-
-        $req = ("SELECT * FROM page");
+        ");
 
         $res = $this::$conn->query($req);
 
-        while ($row = $res->fetch(PDO::FETCH_OBJ)) {
-            $pages[$row->id] = new Page($row->id, new TextElement($row->name));
+        while ($row = $res->fetch(PDO::FETCH_OBJ))
+        {
+            if ($pages[$row->p_id] == null)
+            {
+                $pages[$row->p_id] = new Page($row->p_id, new TextElement($row->p_name));
+            }
+            $pages[$row->p_id]->addArticle($row->a_id);
+
         }
+        foreach ($pages as $page => $value) {
+            var_dump($value->getArticles());
+        }
+        
         return $pages;
     }
     
-    public function updatePage(String $pageName, String $pageID): void{
+    public function updatePageName(String $pageName, String $pageID): void{
         $req = "UPDATE `page` SET `name` = '$pageName' WHERE `id`   = '$pageID'";
         $this::$conn->exec($req);   
-        echo "Page updated successfully";
+        echo "Page name updated successfully";
     }
 
     public function deletePage(String $pageID): void{

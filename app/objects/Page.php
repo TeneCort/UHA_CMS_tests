@@ -3,7 +3,7 @@ class Page {
 
 	protected $pageID, $pageName;
 
-	protected $articles = array(1,2,3);
+	protected $articles = array();
 	
 	public function __construct(String $id, TextElement $name)
 	{
@@ -41,26 +41,15 @@ class Page {
 		$this->articles = $articles;
 	}
 
-	public function addArticle(Article $addedArticle) : void
+	public function addArticle(String $addedArticleID) : void
 	{
-		array_push($this->articles, $addedArticle->getID());
+		array_push($this->articles, $addedArticleID);
 	}
 
-	public function removeArticle(Article $removedArticle) : void
+	public function removeArticle(Article $removedArticleID) : void
 	{
-		
-	}
-
-	public function arrayToLongString() : String
-	{
-		$arrayToString = implode(",", $this->articles);
-		return $arrayToString;
-	}
-
-	public function longStringToArray() : array
-	{
-		$stringToArray = explode(',', $stringToArray);
-		return $stringToArray;
+		$valueToDelete = array_search($removedArticleID, $articles);
+		array_slice($articles, $valueToDelete, 1);
 	}
 }
 ?>
