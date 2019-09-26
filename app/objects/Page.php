@@ -46,10 +46,10 @@ class Page {
 		array_push($this->articles, $addedArticleID);
 	}
 
-	public function removeArticle(Article $removedArticleID) : void
+	public function removeArticle(String $removedArticleID) : void
 	{
-		$valueToDelete = array_search($removedArticleID, $articles);
-		array_slice($articles, $valueToDelete, 1);
+		$valueToDelete = array_search($removedArticleID, $this->articles);
+		array_splice($this->articles, $valueToDelete, 1);
 	}
 }
 ?>

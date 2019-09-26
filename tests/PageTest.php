@@ -64,15 +64,17 @@ use PHPUnit\Framework\TestCase;
 		$this->assertEquals(array('1', '2', '3'), $this->page->getArticles());
 	}
 
-	/*public function testSetGetArticleCategory()
+	public function testAddArticle()
 	{
-		$this->article->setCategory(new Category('1', new TextElement('Test')));
-		$this->assertEquals('Test', $this->article->getCategory()->getName()->getTextContent());
+		$this->page->setArticles(array('1'));
+		$this->page->addArticle('2');
+		$this->assertEquals(array('1', '2'), $this->page->getArticles());
 	}
 
-	/*public function testSetGetArticlePage()
+	public function testRemoveArticle()
 	{
-		$this->article->setPage(new Page('1', new TextElement('Test')));
-		$this->assertEquals('Test', $this->article->getPage()->getName()->getTextContent());
-	}*/
+		$this->page->setArticles(array('1', '2'));
+		$this->page->removeArticle('2');
+		$this->assertEquals(array('1'), $this->page->getArticles());
+	}
 }

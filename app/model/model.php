@@ -26,6 +26,18 @@ class Model {
         $this::$name = $db['name'];
     }
 
+    public function userSignUp(): void{
+
+    }
+
+    public function userSignIn(): void{
+
+    }
+
+    public function userSignOut(): void{
+
+    }
+
     public function createArticle(String $title, String $textContent, String $category, String $page): void{
         $req = "INSERT `article` (`title`, `textContent`, `category`, `page`) VALUES ('$title', '$textContent', '$category', '$page')";
 
@@ -158,10 +170,6 @@ class Model {
             $pages[$row->p_id]->addArticle($row->a_id);
 
         }
-        foreach ($pages as $page => $value) {
-            var_dump($value->getArticles());
-        }
-        
         return $pages;
     }
     
