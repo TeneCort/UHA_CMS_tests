@@ -4,5 +4,6 @@ php:
   - '7.1'
 
 script:
-   - composer install
-   - vendor/bin/phpunit
+   - wget https://phar.phpunit.de/phpunit-8.3.phar
+   - chmod +x phpunit-8.3.phar
+   - ./phpunit-8.3.phar --version
