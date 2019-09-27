@@ -1,6 +1,6 @@
 <?php
 
-require 'init.php';
+require_once('init.php');
 
 use PHPUnit\Framework\TestCase;
 
@@ -11,6 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 	protected function setUp() : void
 	{
+
 		$this->textElement = new TextElement('');
 		$this->category    = new Category('1', $this->textElement);
 		$this->page        = new Page('1', $this->textElement);	
