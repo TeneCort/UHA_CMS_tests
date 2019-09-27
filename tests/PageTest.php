@@ -41,6 +41,11 @@ use PHPUnit\Framework\TestCase;
         $this->assertIsString('', $this->page->getID());
 	}
 
+	public function testPageNameIsTextElement()
+	{
+        $this->assertInstanceOf(TextElement::class, $this->page->getName());
+	}
+
 	public function testArticlesIsArray()
 	{
         $this->assertIsArray($this->page->getArticles());

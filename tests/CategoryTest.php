@@ -40,6 +40,11 @@ use PHPUnit\Framework\TestCase;
         $this->assertIsString('', $this->category->getID());
 	}
 
+	public function testCategoryNameIsTextElement()
+	{
+        $this->assertInstanceOf(TextElement::class, $this->category->getName());
+	}
+
 	public function testCategoryNameIsObject()
 	{
         $this->assertIsObject($this->category->getName());

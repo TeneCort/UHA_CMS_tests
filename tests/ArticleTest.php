@@ -82,6 +82,16 @@ use PHPUnit\Framework\TestCase;
 		$this->assertInstanceOf(TextElement::class, $this->article->getTextContent());
 	}
 
+	public function testCategoryIsCategory()
+	{
+		$this->assertInstanceOf(Category::class, $this->article->getCategory());
+	}
+
+	public function testPageIsPage()
+	{
+		$this->assertInstanceOf(Page::class, $this->article->getPage());
+	}
+
 	public function testSetGetArticleID()
 	{
 		$this->article->setID('2');
