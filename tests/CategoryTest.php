@@ -4,7 +4,7 @@ require_once('init.php');
 
 use PHPUnit\Framework\TestCase;
 
- class TextElementTest extends TestCase
+ class CategoryTest extends TestCase
  {
 
 	protected $textElement, $category;
