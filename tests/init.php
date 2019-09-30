@@ -1,6 +1,5 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
 
 define('OBJECTS', '../app/objects/');
 
