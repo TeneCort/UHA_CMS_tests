@@ -18,6 +18,8 @@
 --
 -- Table structure for table `article`
 --
+USE cms;
+
 
 DROP TABLE IF EXISTS `article`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
