@@ -9,6 +9,9 @@ addons:
     organization: "tenecort"
     token:
       secure: $SONAR_TOKEN # encrypted value of your token
+
+git:
+  depth: false
   
 script:
    - wget https://phar.phpunit.de/phpunit-8.3.phar
