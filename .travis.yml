@@ -16,5 +16,5 @@ git:
 script:
    - wget https://phar.phpunit.de/phpunit-8.3.phar
    - chmod +x phpunit-8.3.phar
-   - ./phpunit-8.3.phar --bootstrap tests/init.php tests/.
+   - ./phpunit-8.3.phar --bootstrap tests/init.php tests/. -c phpunit.xml.dist --coverage-clover=coverage-report.clover --log-junit=test-report.xml
    - sonar-scanner
