@@ -226,7 +226,7 @@ class Model {
 
     public function imageUpload(){
 
-        echo $_FILES["fileToUpload"]["name"];
+        //echo $_FILES["fileToUpload"]["name"];
 
         $target_dir = ROOT . 'public' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
 
@@ -269,7 +269,7 @@ class Model {
             echo "Sorry, your file was not uploaded.";
         // if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            if (move_uploaded_file(strip_tags($_FILES["fileToUpload"]["tmp_name"]), $target_file)) {
                 echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
             } else {
                 echo "Sorry, there was an error uploading your file.";
