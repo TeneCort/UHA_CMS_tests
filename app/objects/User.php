@@ -40,7 +40,7 @@ class User {
 
     public function setPassword(String $newPassword)
     {
-    	$this->userPassword = $newTextContent;
+    	$this->userPassword = $newPassword;
     }
 
     public function getFirstName(): TextElement
@@ -60,7 +60,7 @@ class User {
 
     public function setLastName(TextElement $newLastName)
     {
-        $this->page = $userLastName;
+        $this->page = $newLastName;
     }
 
     /**
