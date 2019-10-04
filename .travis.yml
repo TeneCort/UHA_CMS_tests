@@ -2,7 +2,16 @@ language: php
 php:
   - '7.2'
 
+dist: trusty
+
+addons:
+  sonarcloud:
+    organization: "tenecort"
+    token:
+      secure: $SONAR_TOKEN # encrypted value of your token
+  
 script:
    - wget https://phar.phpunit.de/phpunit-8.3.phar
    - chmod +x phpunit-8.3.phar
    - ./phpunit-8.3.phar --bootstrap tests/init.php tests/.
+   - sonar-scanner

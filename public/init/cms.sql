@@ -18,6 +18,7 @@
 --
 -- Table structure for table `article`
 --
+
 USE cms;
 
 

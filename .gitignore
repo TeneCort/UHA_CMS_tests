@@ -1,0 +1,5 @@
+# Add directories/files to be ignored
+
+public/db/
+
+app/model/db.ini
