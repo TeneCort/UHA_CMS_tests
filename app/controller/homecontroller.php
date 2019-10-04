@@ -3,7 +3,7 @@
 class homeController extends Controller{
 
 	public function getUrl(): array{
-		$request = $_SERVER['REQUEST_URI'];
+		$request = strip_tags($_SERVER['REQUEST_URI']);
 		$id      = explode('/', $request);
 		return $id;
 	}
