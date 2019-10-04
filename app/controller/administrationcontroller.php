@@ -1,10 +1,14 @@
 <?php
 
-class administrationController extends Controller {
+class AdministrationController extends Controller {
+
+	
 	
 	public function index(String $id = "", String $name = ""): void{
-
-		$this->model('administration');
+		
+		define('ADMIN', 'administration');
+		
+		$this->model(ADMIN);
 
 		if (isset($_POST['createArticle'])) {
 			$this->model->createArticle($_POST['title'], $_POST['text'], $_POST['category'], $_POST['page']);
@@ -39,7 +43,7 @@ class administrationController extends Controller {
 		if (isset($_POST['setBackgroundImage'])) {
 			$this->model->imageUpload();
 		}
-		$this->view('administration' . DIRECTORY_SEPARATOR . 'index', [
+		$this->view(ADMIN . DIRECTORY_SEPARATOR . 'index', [
 			'id'         => $id,
 			'name'       => $name,
 			'navBar'     => $this->model->adminNavBar(),
@@ -55,17 +59,17 @@ class administrationController extends Controller {
 
 	public function aboutUs(String $id = "", String $name = ""): void{
 
-		$this->model('administration');
+		$this->model(ADMIN);
 
-		$this->view('administration' . DIRECTORY_SEPARATOR . 'aboutUs');
+		$this->view(ADMIN . DIRECTORY_SEPARATOR . 'aboutUs');
 		$this->view->render();
 	}
 
 	public function newArticle(String $id = "", String $name = ""): void{
 
-		$this->model('administration');
+		$this->model(ADMIN);
 		
-		$this->view('administration' . DIRECTORY_SEPARATOR . 'newarticle', [
+		$this->view(ADMIN . DIRECTORY_SEPARATOR . 'newarticle', [
 			'id'         => $id,
 			'name'       => $name,
 			'navBar'     => $this->model->adminNavBar()
@@ -76,9 +80,9 @@ class administrationController extends Controller {
 
 	public function readArticle(String $id = "", String $name = ""): void{
 
-		$this->model('administration');
+		$this->model(ADMIN);
 
-		$this->view('administration' . DIRECTORY_SEPARATOR . 'readarticle', [
+		$this->view(ADMIN . DIRECTORY_SEPARATOR . 'readarticle', [
 			'article'    => $this->model->readArticles()[$_POST['articleID']],
 			'id'         => $id,
 			'name'       => $name,
@@ -90,9 +94,9 @@ class administrationController extends Controller {
 
 	public function modifyArticle(String $id = "", String $name = ""): void{
 
-		$this->model('administration');
+		$this->model(ADMIN);
 
-		$this->view('administration' . DIRECTORY_SEPARATOR . 'modifyarticle', [
+		$this->view(ADMIN . DIRECTORY_SEPARATOR . 'modifyarticle', [
 			'id'         => $id,
 			'name'       => $name,
 			'article'    => $this->model->readArticles()[$_POST['id']],
@@ -106,9 +110,9 @@ class administrationController extends Controller {
 
 	public function modifyCategory(String $id = "", String $name = ""): void{
 
-		$this->model('administration');
+		$this->model(ADMIN);
 
-		$this->view('administration' . DIRECTORY_SEPARATOR . 'modifycategory', [
+		$this->view(ADMIN . DIRECTORY_SEPARATOR . 'modifycategory', [
 			'id'          => $id,
 			'name'        => $name,
 			'navBar'      => $this->model->adminNavBar(),
@@ -120,9 +124,9 @@ class administrationController extends Controller {
 
 	public function modifyPage(String $id = "", String $name = ""): void{
 
-		$this->model('administration');
+		$this->model(ADMIN);
 
-		$this->view('administration' . DIRECTORY_SEPARATOR . 'modifypage', [
+		$this->view(ADMIN . DIRECTORY_SEPARATOR . 'modifypage', [
 			'id'          => $id,
 			'name'        => $name,
 			'navBar'      => $this->model->adminNavBar(),
