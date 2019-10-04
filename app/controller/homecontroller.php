@@ -1,14 +1,18 @@
 <?php
 
-class homeController extends Controller{
+class HomeController extends Controller
+{
 
-	public function getUrl(): array{
+	public function getUrl(): array
+	{
+
 		$request = strip_tags($_SERVER['REQUEST_URI']);
 		$id      = explode('/', $request);
 		return $id;
 	}
 	
-	public function index(String $id = "", String $name = ""): void{
+	public function index(String $id = "", String $name = ""): void
+	{
 
 		$this->model('home');
 
@@ -24,7 +28,8 @@ class homeController extends Controller{
 		$this->view->render();
 	}
 
-	public function pages(String $id = "", String $name = ""): void{
+	public function pages(String $id = "", String $name = ""): void
+	{
 
 		$this->model('home');
 
