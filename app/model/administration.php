@@ -2,15 +2,15 @@
 
 class Administration extends Model{
     
-    protected $article;
+    protected $article, $adminNavBar;
 
     public function __construct(){
         parent:: __construct();          
     }
 
     public function adminNavBar(): AdminNavBar{
-        $adminNavBar = new AdminNavBar();
-        return $adminNavBar;
+        $this->adminNavBar = new AdminNavBar();
+        return $this->adminNavBar;
     }
 
 }

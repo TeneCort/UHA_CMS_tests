@@ -1,5 +1,5 @@
 <?php 
-class backgroundImage{
+class BackgroundImage{
 
 	protected $imageName = ROOT . 'public' . DIRECTORY_SEPARATOR . 'uploads' .DIRECTORY_SEPARATOR . 'images.jpeg';
 

@@ -7,20 +7,24 @@ class Application {
 	protected $param = [];
 	protected $webPage;
 
-	public function __construct() {
+	public function __construct() 
+	{
 		
 		$this->prepareURL();	
 
-		if (file_exists(CONTROLLER . $this->controller . '.php')) {
+		if (file_exists(CONTROLLER . $this->controller . '.php')) 
+		{
 
 			$this->controller = new $this->controller;
 
-			if (method_exists($this->controller, $this->action)) {
+			if (method_exists($this->controller, $this->action)) 
+			{
 
 				 call_user_func_array([$this->controller, $this->action], $this->param);
 			}
 
-			else {
+			else 
+			{
 				echo 'THERE IS A PROBLEM MATE! Controller. ';
 				echo 'Action : ' . $this->action;
 				echo 'Controller : ' . $this->controller;
@@ -28,15 +32,19 @@ class Application {
 				echo 'WebPage : ' . $this->webPage;
 			}
 		}
-
-		else echo 'THERE IS A PROBLEM MATE! Application';
+		else
+		{
+			echo 'THERE IS A PROBLEM MATE! Application';
+		} 
 	}
 
-	protected function prepareURL() {
+	protected function prepareURL() 
+	{
 
 		$request = trim($_SERVER['REQUEST_URI'], '/');
 		
-		if (!empty($request)) {
+		if (!empty($request)) 
+		{
 			$url = explode('/', $request);
 			$this->controller = isset($url[0]) ? $url[0].'controller' : 'homecontroller';
 			$this->action = isset($url[1]) ? $url[1] : 'index'; 	

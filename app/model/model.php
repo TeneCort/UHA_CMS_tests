@@ -187,7 +187,7 @@ class Model {
     }
 
     public function Menu(): Menu{
-        return new Menu($this->readPages(), $this->readnavBarColor());;
+        return new Menu($this->readPages(), $this->readnavBarColor());
     }
 
     public function readNavBarColors(): array{
