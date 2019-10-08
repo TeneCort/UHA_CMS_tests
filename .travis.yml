@@ -26,5 +26,8 @@ script:
    - docker-compose --version
    - docker-compose up -d
    - ./phpunit-8.3.phar --bootstrap tests/init.php tests/.
+   - sudo docker inspect ioannis-fil_rouge_db_1
+   - sudo docker exec -it ioannis-fil_rouge_db_1 /bin/bash
+   - mysql -uroot -p -h localhost -P 3307
    #- ./phpunit-8.3.phar --coverage-clover=coverage-report.clover --log-junit=test-report.xml
    #- sonar-scanner
