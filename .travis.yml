@@ -7,6 +7,8 @@ dist: trusty
 services:
   - docker
 
+
+
 #addons:
   #sonarcloud:
     #organization: "tenecort"
@@ -20,9 +22,9 @@ script:
    - sudo apt-get update
    - wget https://phar.phpunit.de/phpunit-8.3.phar
    - chmod +x phpunit-8.3.phar
-   #- sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
-   - docker-compose up -d
    - ./phpunit-8.3.phar --bootstrap tests/init.php tests/.
+   #- sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
    - docker-compose --version
+   - docker-compose up -d
    #- ./phpunit-8.3.phar --coverage-clover=coverage-report.clover --log-junit=test-report.xml
    #- sonar-scanner
