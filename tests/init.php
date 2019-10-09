@@ -12,7 +12,6 @@ $modules = [ROOT,APP,CORE,CONTROLLER,DATA,OBJECTS];
 foreach ($modules as $value) {
 	foreach (glob($value . "*.php") as $filename) {
 		require $filename;
-		echo $filename;
 	}
 }
 	
