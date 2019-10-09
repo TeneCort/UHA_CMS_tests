@@ -8,15 +8,22 @@ define('CORE'      , ROOT . 'app'       . DIRECTORY_SEPARATOR . 'core'       . D
 define('CONTROLLER', ROOT . 'app'       . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR);
 define('OBJECTS'   , ROOT . 'app'       . DIRECTORY_SEPARATOR . 'objects'    . DIRECTORY_SEPARATOR);
 
-$modules = [ROOT,APP,CORE,CONTROLLER,DATA,OBJECTS];
+$modules = [ROOT,APP,CORE,CONTROLLER,DATA,OBJECTS,MODEL];
+
+require MODEL . "model.php";
+
 foreach ($modules as $value) {
-	foreach (glob($value . "*.php") as $filename) {
-		require $filename;
+	//echo 'Module : ' . $value . PHP_EOL;
+	foreach (glob($value . "*.php") as $filename) {	
+		if (!fnmatch("*model*", $filename)) {
+			//echo 'File Name : ' . $filename . PHP_EOL;
+			require $filename;
+		}
 	}
 }
 	
-/*highlight_string("<?php\n\$data =\n" . var_export($modules, true) . ";\n?>");*/
+/*highlight_string("<?php\n\$data =\n" . var_export($modules, true) . ";\n?>");
 set_include_path(ROOT . PATH_SEPARATOR . implode(PATH_SEPARATOR, $modules));
 spl_autoload_register('spl_autoload', false);
-
+*/
 ?>
