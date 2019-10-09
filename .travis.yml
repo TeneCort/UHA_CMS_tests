@@ -26,10 +26,10 @@ script:
    - docker-compose --version
    - docker-compose up -d
    - sleep 30
-   - ./phpunit-8.3.phar --bootstrap tests/init.php tests/.
+   - ./phpunit-8.3.phar --bootstrap tests/init.php tests/. --coverage-clover=coverage-report.clover.xml --debug
    #- sudo docker inspect uhacmstests_db_1
    #- sudo docker exec -it ioannis-fil_rouge_db_1 /bin/bash
    #- mysql -uroot -p -h localhost -P 3307
    #- ./phpunit-8.3.phar --coverage-clover=coverage-report.clover --log-junit=test-report.xml
-   - ./phpunit-8.3.phar --coverage-clover=coverage-report.clover.xml --debug
+   - ./phpunit-8.3.phar 
    #- sonar-scanner
