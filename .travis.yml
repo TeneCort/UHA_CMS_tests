@@ -26,7 +26,7 @@ script:
    - docker-compose --version
    - docker-compose up -d
    - sleep 30
-   - ./phpunit-8.3.phar --bootstrap tests/init.php tests/. --whitelist=app/. --coverage-clover=coverage-report.clover --debug
+   - ./phpunit-8.3.phar --bootstrap tests/init.php tests/. --whitelist=app/. --coverage-clover=coverage-report.clover --log-junit=test-report.xml --debug
    #- cat coverage-report.clover.xml
    #- sudo docker inspect uhacmstests_db_1
    #- sudo docker exec -it ioannis-fil_rouge_db_1 /bin/bash
