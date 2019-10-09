@@ -5,7 +5,6 @@ class HomeController extends Controller
 
 	public function getUrl(): array
 	{
-
 		$request = strip_tags($_SERVER['REQUEST_URI']);
 		$id      = explode('/', $request);
 		return $id;

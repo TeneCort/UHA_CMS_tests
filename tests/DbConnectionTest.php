@@ -105,6 +105,6 @@ use PHPUnit\Framework\TestCase;
 
     public function testReadPageID()
 	{
-        $this->assertSame('2', $this->article->p_id);
+        $this->assertSame('1', $this->article->p_id);
     }
 }
