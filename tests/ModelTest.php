@@ -4,7 +4,7 @@ require_once('init.php');
 
 use PHPUnit\Framework\TestCase;
 
- class DbConnectionTests extends TestCase
+ class ModelTests extends TestCase
  {
 
 	static protected $host, $user, $pass, $name, $conn;
