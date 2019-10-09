@@ -2,4 +2,4 @@
 
 public/db/*
 
-app/model/db.ini
+#app/model/db.ini
