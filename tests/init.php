@@ -13,17 +13,10 @@ $modules = [ROOT,APP,CORE,CONTROLLER,DATA,OBJECTS,MODEL];
 require MODEL . "model.php";
 
 foreach ($modules as $value) {
-	//echo 'Module : ' . $value . PHP_EOL;
 	foreach (glob($value . "*.php") as $filename) {	
 		if (!fnmatch("*model*", $filename)) {
-			//echo 'File Name : ' . $filename . PHP_EOL;
 			require $filename;
 		}
 	}
 }
-	
-/*highlight_string("<?php\n\$data =\n" . var_export($modules, true) . ";\n?>");
-set_include_path(ROOT . PATH_SEPARATOR . implode(PATH_SEPARATOR, $modules));
-spl_autoload_register('spl_autoload', false);
-*/
 ?>
