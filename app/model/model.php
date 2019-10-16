@@ -3,6 +3,8 @@ class Model {
 
     static protected $host, $user, $pass, $name, $conn;
 
+    protected $lastID;
+
     public function __construct() {
         $this->dbConfig();
         $this->connection();
@@ -27,28 +29,19 @@ class Model {
         $this::$name = $db['name'];
     }
 
-    public function userSignUp(): void{
-
-    }
-
-    public function userSignIn(): void{
-
-    }
-
-    public function userSignOut(): void{
-
-    }
-
     public function createArticle(String $title, String $textContent, String $category, String $page): void{
         $req = "INSERT `article` (`title`, `textContent`, `category`, `page`) VALUES ('$title', '$textContent', '$category', '$page')";
 
         $this::$conn->exec($req);           
 
-        $last_id = $this::$conn->lastInsertId();
+        $this->lastID = $this::$conn->lastInsertId();
 
-        echo "Records inserted successfully. Last inserted ID is: " . $last_id;
+        //echo "New record created successfully"; 
+    }
 
-        echo "New record created successfully"; 
+    public function getLastID(): string
+    {
+        return $this->lastID;
     }
 
     public function readArticles(): array{
@@ -94,7 +87,7 @@ class Model {
     public function deleteArticle(String $articleID): void{
         $req = "DELETE  FROM `article` WHERE `id` = '$articleID'";
         $this::$conn->exec($req);         
-        echo "Article deleted successfully"; 
+        //echo "Article deleted successfully"; 
     }
 
     public function updateArticle(String $articleID, String $articleTitle, String $textContent, String $categoryID, String $pageID): void{
