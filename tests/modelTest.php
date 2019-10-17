@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
  {
 
 	private $model, $articles, $article, $categories, $category, $testCategory, $testArticle, $lastID;
+	private $pages, $page, $testPage;
 
 	protected function setUp() : void
 	{
@@ -18,6 +19,9 @@ use PHPUnit\Framework\TestCase;
 
 		$this->categories = $this->model->readCategories();
 		$this->category = $this->categories[1];
+
+		$this->pages = $this->model->readPages();
+		$this->page = $this->pages[1];
 
 		$this->testArticle = new Article(
 			'1',
@@ -127,4 +131,49 @@ use PHPUnit\Framework\TestCase;
     	$this->categories = $this->model->readCategories();
     	$this->assertSame(1, count($this->categories));
     }
+
+    /* --------  PAGE -------- */
+
+    public function testReadCategoriesReturnsArray()
+	{
+		$this->assertIsArray($this->pages);
+	}
+
+	/*public function testReadCategoriesArrayContainsCategory()
+	{
+		$this->assertInstanceOf(Category::class, $this->category);
+	}
+
+    public function testReadCategory()
+    {
+    	$this->assertEquals($this->category, $this->testCategory);
+    }
+
+    public function testCreateCategory()
+    {
+    	$this->model->createCategory('foo');
+
+    	$this->categories = $this->model->readCategories();
+    	$this->assertInstanceOf(Category::class, $this->categories[$this->model->getLastID()]);
+    }
+
+    public function testUpdateCategory()
+    {
+    	$this->categories = $this->model->readCategories();
+    	$this->model->updateCategory(
+    		'hello',
+    		end($this->categories)->getID()
+    	);
+    	$this->categories = $this->model->readCategories();
+    	$this->category = $this->categories[end($this->categories)->getID()];
+
+    	$this->assertSame('hello', $this->category->getName()->getTextContent());
+    }
+
+    public function testDeleteCategory()
+    {
+    	$this->model->deleteCategory(end($this->categories)->getID());
+    	$this->categories = $this->model->readCategories();
+    	$this->assertSame(1, count($this->categories));
+    }*/
 }
