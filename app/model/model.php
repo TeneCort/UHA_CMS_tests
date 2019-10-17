@@ -31,12 +31,8 @@ class Model {
 
     public function createArticle(String $title, String $textContent, String $category, String $page): void{
         $req = "INSERT `article` (`title`, `textContent`, `category`, `page`) VALUES ('$title', '$textContent', '$category', '$page')";
-
         $this::$conn->exec($req);           
-
         $this->lastID = $this::$conn->lastInsertId();
-
-        //echo "New record created successfully"; 
     }
 
     public function getLastID(): string
@@ -86,8 +82,7 @@ class Model {
 
     public function deleteArticle(String $articleID): void{
         $req = "DELETE  FROM `article` WHERE `id` = '$articleID'";
-        $this::$conn->exec($req);         
-        //echo "Article deleted successfully"; 
+        $this::$conn->exec($req);
     }
 
     public function updateArticle(String $articleID, String $articleTitle, String $textContent, String $categoryID, String $pageID): void{
@@ -101,14 +96,13 @@ class Model {
             `page`        = '$pageID'
         WHERE 
             `id`          = '$articleID'";
-        $this::$conn->exec($req);         
-        echo "Article updated successfully"; 
+        $this::$conn->exec($req); 
     }
 
     public function createCategory($categoryName): void{
         $req = "INSERT `category` (`name`) VALUES ('$categoryName')";
-        $this::$conn->exec($req);   
-        echo "New category created successfully"; 
+        $this::$conn->exec($req);  
+        $this->lastID = $this::$conn->lastInsertId(); 
     }
 
     public function readCategories(): array{
@@ -122,20 +116,17 @@ class Model {
 
     public function updateCategory(String $categoryName, String $categoryID): void{
         $req = "UPDATE `category` SET `name` = '$categoryName' WHERE `id` = '$categoryID'";
-        $this::$conn->exec($req);   
-        echo "Category updated successfully";
+        $this::$conn->exec($req);
     }
 
     public function deleteCategory(String $categoryID): void{
         $req = "DELETE  FROM `category` WHERE `id` = '$categoryID'";
-        $this::$conn->exec($req);       
-        echo "Category deleted successfully"; 
+        $this::$conn->exec($req);
     }
 
     public function createPage(String $pageName): void{
         $req = "INSERT `page` (`name`) VALUES ('$pageName')";
-        $this::$conn->exec($req);           
-        echo "New page created successfully"; 
+        $this::$conn->exec($req); 
     }
 
     public function readPages(): array{
@@ -169,14 +160,12 @@ class Model {
     
     public function updatePageName(String $pageName, String $pageID): void{
         $req = "UPDATE `page` SET `name` = '$pageName' WHERE `id`   = '$pageID'";
-        $this::$conn->exec($req);   
-        echo "Page name updated successfully";
+        $this::$conn->exec($req);
     }
 
     public function deletePage(String $pageID): void{
         $req = "DELETE  FROM `page` WHERE `id` = '$pageID'";
-        $this::$conn->exec($req);       
-        echo "Page deleted successfully"; 
+        $this::$conn->exec($req);; 
     }
 
     public function Menu(): Menu{
@@ -213,8 +202,7 @@ class Model {
 
     public function updateNavBarColor(String $color){
         $req = ("UPDATE `navBar` SET `color` = '$color'");
-        $this::$conn->exec($req);   
-        echo "NavBar color updated successfully";
+        $this::$conn->exec($req);
     }
 
     public function imageUpload(){
