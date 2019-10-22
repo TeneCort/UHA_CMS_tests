@@ -34,7 +34,7 @@ class Application {
 		}
 		else
 		{
-			echo 'THERE IS A PROBLEM MATE! Application';
+			header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
 		} 
 	}
 

@@ -3,7 +3,7 @@ class Model {
 
     static protected $host, $user, $pass, $name, $conn;
 
-    protected $lastID;
+    protected $article, $page, $lastID;
 
     public function __construct() {
         $this->dbConfig();
@@ -148,10 +148,13 @@ class Model {
 
         while ($row = $res->fetch(PDO::FETCH_OBJ))
         {
-            if ($pages[$row->p_id] == null)
+
+            /*if ($pages[$row->p_id] == null)
             {
                 $pages[$row->p_id] = new Page($row->p_id, new TextElement($row->p_name));
-            }
+            }*/
+           
+            $pages[$row->p_id] = new Page($row->p_id, new TextElement($row->p_name));
             $pages[$row->p_id]->addArticle($row->a_id);
 
         }

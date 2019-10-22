@@ -134,7 +134,7 @@ use PHPUnit\Framework\TestCase;
 
     /* --------  PAGE -------- */
 
-    public function testReadCategoriesReturnsArray()
+    public function testReadPagesReturnsArray()
 	{
 		$this->assertIsArray($this->pages);
 	}

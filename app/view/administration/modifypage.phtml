@@ -10,7 +10,7 @@
 		<form action="/administration" method="POST">
 		Name:<br>
 		<input type="text" name="name" value="<?php echo $page->getName()->getTextContent() ?>"><br>
-		<p><?php echo $page->arrayToLongString() ?></p>
+		
 		<input type="hidden" name="id" value="<?php echo $page->getID() ?>">
 		<input type="submit" name="updatePage" value="Modify Page">
 	</form> 
