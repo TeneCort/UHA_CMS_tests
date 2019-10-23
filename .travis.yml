@@ -28,7 +28,7 @@ script:
    - chmod +x phpunit-8.3.phar
    - docker-compose up -d
    - sleep 10
-   #- nohup php -S 127.0.0.1:8000 &
+   - php -S 127.0.0.1:8080 &
    - ./phpunit-8.3.phar --bootstrap tests/init.php tests/. --whitelist=app/. --coverage-clover=coverage-report.clover --log-junit=test-report.xml --debug
    #- ps -a
    - sonar-scanner
