@@ -19,8 +19,10 @@ class Application {
 
 			if (method_exists($this->controller, $this->action)) 
 			{
-
-				 call_user_func_array([$this->controller, $this->action], $this->param);
+				//$host = "http://" . $_SERVER["REMOTE_ADDR"] . ":" . $_SERVER["SERVER_PORT"] . "/";
+				//var_dump($host);	
+				//echo($_SERVER["REMOTE_ADDR"] . ":" . $_SERVER["SERVER_PORT"]);
+				call_user_func_array([$this->controller, $this->action], $this->param);
 			}
 
 			else 

@@ -2,6 +2,10 @@
 
 function CurlRoutes($url)
 {
+	//$host = "http://" . $_SERVER['REMOTE_ADDR'] . ":" . $_SERVER["SERVER_PORT"] . "/";
+
+	//$url = $host . $url;
+
 	$ch = curl_init();
 
 	  curl_setopt($ch, CURLOPT_URL, $url);
