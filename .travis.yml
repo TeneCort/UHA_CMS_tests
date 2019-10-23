@@ -27,8 +27,8 @@ script:
    - wget https://phar.phpunit.de/phpunit-8.3.phar
    - chmod +x phpunit-8.3.phar
    - docker-compose up -d
-   - sleep 15
-   - nohup php -S 127.0.0.1:8000 &
+   - sleep 10
+   #- nohup php -S 127.0.0.1:8000 &
    - ./phpunit-8.3.phar --bootstrap tests/init.php tests/. --whitelist=app/. --coverage-clover=coverage-report.clover --log-junit=test-report.xml --debug
-   - ps -a
+   #- ps -a
    - sonar-scanner
