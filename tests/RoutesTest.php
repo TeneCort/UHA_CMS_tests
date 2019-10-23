@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 
     public function testHomeIndexRoute()
     {
-        var_dump(phpinfo(32));
+        //var_dump(phpinfo(32));
         //echo("http://" . $_SERVER['REMOTE_ADDR'] . ":" . $_SERVER["SERVER_PORT"] . "/");
         $routeResponse = CurlRoutes("127.0.0.1:8000/home/index");;
         $this->assertEquals(preg_match('/200/', $routeResponse), '1');
