@@ -17,14 +17,12 @@ use PHPUnit\Framework\TestCase;
 
     public function testHomeIndexRoute()
     {
-        //var_dump(phpinfo(32));
-        //echo("http://" . $_SERVER['REMOTE_ADDR'] . ":" . $_SERVER["SERVER_PORT"] . "/");
-        $routeResponse = CurlRoutes("localhost:8000/home/index");;
+        $routeResponse = CurlRoutes("/home/index");;
         $this->assertEquals(preg_match('/200/', $routeResponse), '1');
     }
     public function testAdminRoute()
     {
-        $routeResponse = CurlRoutes("localhost:8000/administrationn");;
-        $this->assertEquals(preg_match('/404/', $routeResponse), '1');
+        $routeResponse = CurlRoutes("/administration");;
+        $this->assertEquals(preg_match('/200/', $routeResponse), '1');
     }
 }

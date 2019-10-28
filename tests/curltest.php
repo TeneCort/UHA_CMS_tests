@@ -2,10 +2,7 @@
 
 function CurlRoutes($url)
 {
-	//$host = "http://" . $_SERVER['REMOTE_ADDR'] . ":" . $_SERVER["SERVER_PORT"] . "/";
-
-	//$url = $host . $url;
-
+	$url = "localhost:8000" . $url;
 	$ch = curl_init();
 
 	  curl_setopt($ch, CURLOPT_URL, $url);
