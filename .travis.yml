@@ -32,7 +32,6 @@ before_script:
   - sudo service apache2 restart
 
 script:
-   #- sudo apt-get update
    - wget https://phar.phpunit.de/phpunit-8.3.phar
    - chmod +x phpunit-8.3.phar
    - docker-compose up -d

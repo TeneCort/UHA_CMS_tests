@@ -1,7 +1,4 @@
 # Add directories/files to be ignored
 
 public/db/*
-tests/curltest.php
-tests/RoutesTest.php
-
-#app/model/db.ini
+app/model/db.ini
