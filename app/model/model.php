@@ -127,6 +127,7 @@ class Model {
     public function createPage(String $pageName): void{
         $req = "INSERT `page` (`name`) VALUES ('$pageName')";
         $this::$conn->exec($req); 
+        $this->lastID = $this::$conn->lastInsertId();
     }
 
     public function readPages(): array{

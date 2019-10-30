@@ -33,6 +33,9 @@ use PHPUnit\Framework\TestCase;
 
 		$this->testCategory = new Category('1', new TextElement('category'));
 
+        $this->testPage = new Page('1', new TextElement('page'));
+        $this->testPage->addArticle('1');
+
 	}
 
 	/* --------  ARTICLE -------- */
@@ -139,22 +142,23 @@ use PHPUnit\Framework\TestCase;
 		$this->assertIsArray($this->pages);
 	}
 
-	/*public function testReadCategoriesArrayContainsCategory()
+	public function testReadPagesArrayContainsPage()
 	{
-		$this->assertInstanceOf(Category::class, $this->category);
+		$this->assertInstanceOf(Page::class, $this->page);
 	}
 
-    public function testReadCategory()
+    public function testReadPage()
     {
-    	$this->assertEquals($this->category, $this->testCategory);
+    	$this->assertEquals($this->page, $this->testPage);
     }
-
-    public function testCreateCategory()
+/*
+    public function testCreatePage()
     {
-    	$this->model->createCategory('foo');
+    	$this->model->createPage('foo');
 
-    	$this->categories = $this->model->readCategories();
-    	$this->assertInstanceOf(Category::class, $this->categories[$this->model->getLastID()]);
+    	$this->pages = $this->model->readPages();
+        var_dump($this->pages);
+    	$this->assertInstanceOf(Page::class, $this->pages[$this->model->getLastID()]);
     }
 
     public function testUpdateCategory()
