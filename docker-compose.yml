@@ -19,3 +19,11 @@ services:
     restart: always
     ports:
       - 8090:8080
+
+  web:
+    build: docker/php-apache2
+    container_name: mysite-web
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:80"
