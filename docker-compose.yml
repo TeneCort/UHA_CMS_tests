@@ -19,15 +19,15 @@ services:
     restart: always
     ports:
       - 8090:8080
-
-  web:
-    container_name: mysite-web
-    build: docker/php-apache2
-    links:
-      - "db:database"
-    volumes:
-      - .:/var/www/html
-    ports:
-      - "8000:9000"
-    depends_on:
-      - db
+#
+#  web:
+#    container_name: mysite-web
+#    build: docker/php-apache2
+#    links:
+#      - "db:database"
+#    volumes:
+#      - .:/var/www/html
+#    ports:
+#      - "8000:9000"
+#    depends_on:
+#      - db

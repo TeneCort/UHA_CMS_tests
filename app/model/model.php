@@ -13,7 +13,7 @@ class Model {
     public function connection(): void{
         try {
             $this::$conn = new PDO(
-                'mysql:host=' . $this::$host . ';port=3306;dbname=' . $this::$name, $this::$user, $this::$pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
+                'mysql:host=' . $this::$host . ';port=3307;dbname=' . $this::$name, $this::$user, $this::$pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
             );
         }
         catch (PDOException $e) {
@@ -132,7 +132,7 @@ class Model {
 
     public function readPages(): array{
 
-        $req = ("
+        /*$req = ("
             SELECT
                 p.id   AS p_id,
                 p.name AS p_name,
@@ -143,6 +143,14 @@ class Model {
                 page p
             WHERE
                 p.id = a.page
+        ");*/
+
+        $req = ("
+            SELECT
+                p.id   AS p_id,
+                p.name AS p_name
+            FROM 
+                page p
         ");
 
         $res = $this::$conn->query($req);
@@ -153,13 +161,15 @@ class Model {
             /*if ($pages[$row->p_id] == null)
             {
                 $pages[$row->p_id] = new Page($row->p_id, new TextElement($row->p_name));
-            }*/
+            }
            
             $pages[$row->p_id] = new Page($row->p_id, new TextElement($row->p_name));
-            $pages[$row->p_id]->addArticle($row->a_id);
+            $pages[$row->p_id]->addArticle($row->a_id);*/
+            $page = new Page($row->p_id, new TextElement($row->p_name));
+            $this->pages[$row->p_id] = $page;
 
         }
-        return $pages;
+        return $this->pages;
     }
     
     public function updatePageName(String $pageName, String $pageID): void{
